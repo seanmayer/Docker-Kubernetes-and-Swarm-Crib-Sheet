@@ -22,3 +22,15 @@ a3ed95caeb02: Pull complete
 ```
 
 Test: `curl localhost:8800` # Should return html
+
+### Recommended VS Code extensions
+
+- Docker (allows you to run docker commands from VS Code)
+- Kubernetes (allows you to run kubectl commands from VS Code)
+- Remote Development (allows you to run VS Code in a container)
+    - use cases:
+        - you don't want to install all the tools on your local machine
+        - you want to use a different OS than your local machine
+        - you want to use a different version of a tool than your local machine
+- Remote SSH (allows you to run VS Code on a remote machine)
+- Live Share (allows you to share your VS Code session with others)
