@@ -21,6 +21,19 @@ Status: Downloaded newer image for httpd:latest
 a3ed95caeb02: Pull complete
 ```
 
+### What is a container?
+
+A container is a process or group of processes that are isolated from the rest of the system. It has its own file system, networking, etc. It is a process that is running on the host machine.
+
+- Containers are not VMs
+- Containers are not processes
+- Containers are not files
+- Containers are not directories
+
+- Nginx (web server) is a container that runs on the host machine
+    - https://www.nginx.com/resources/glossary/nginx/ (open source software for web serving, reverse proxying, caching, load balancing, media streaming, and more)
+
+
 Test: `curl localhost:8800` # Should return html
 
 ### Recommended VS Code extensions
