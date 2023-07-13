@@ -41,6 +41,12 @@ a3ed95caeb02: Pull complete
 
 - `docker container top <container id>` - show running processes in container
 
+### Docker Proces Monitoring
+
+- `docker container top <container id>` - show running processes in container
+- `docker container inspect <container id>` - show metadata about container (including process ID)
+- `docker container stats` - show live performance stats for all containers
+
 ### Docker install/config
 
 #### Commands
@@ -74,6 +80,7 @@ A container is a process or group of processes that are isolated from the rest o
 
 - Nginx (web server) is a container that runs on the host machine
     - https://www.nginx.com/resources/glossary/nginx/ (open source software for web serving, reverse proxying, caching, load balancing, media streaming, and more)
+
 
 ### What is image?
 
