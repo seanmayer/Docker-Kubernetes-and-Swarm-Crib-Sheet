@@ -47,6 +47,15 @@ a3ed95caeb02: Pull complete
 - `docker container inspect <container id>` - show metadata about container (including process ID)
 - `docker container stats` - show live performance stats for all containers
 
+### Docker Networking
+
+- `docker container port <container id>` - show port mapping of container
+- `docker container inspect --format '{{ .NetworkSettings.IPAddress }}' <container id>` - show IP address of container
+- `docker network ls` - list networks
+- `docker network inspect <network id>` - show metadata about network
+- `docker network create <network name>` - create network
+- `docker network connect <network name> <container id>` - connect container to network
+
 ### Docker install/config
 
 #### Commands
