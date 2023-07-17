@@ -55,6 +55,7 @@ a3ed95caeb02: Pull complete
 - `docker network inspect <network id>` - show metadata about network
 - `docker network create <network name>` - create network
 - `docker network connect <network name> <container id>` - connect container to network
+- `docker network disconnect <network name> <container id>` - disconnect container from network
 
 ### Docker install/config
 
