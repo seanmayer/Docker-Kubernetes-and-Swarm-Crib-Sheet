@@ -57,6 +57,12 @@ a3ed95caeb02: Pull complete
 - `docker network connect <network name> <container id>` - connect container to network
 - `docker network disconnect <network name> <container id>` - disconnect container from network
 
+### Docker Images
+
+- `docker image ls` - list images
+- `docker image history <image id>` - show history of image
+- `docker image inspect <image id>` - show metadata about image
+
 ### Docker install/config
 
 #### Commands
