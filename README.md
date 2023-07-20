@@ -62,6 +62,11 @@ a3ed95caeb02: Pull complete
 - `docker image ls` - list images
 - `docker image history <image id>` - show history of image
 - `docker image inspect <image id>` - show metadata about image
+- `docker image tag <image id> <new image name>` - tag image
+- `docker image build -t <image name> .` - build image from Dockerfile
+- `docker image push <image name>` - push image to Docker hub
+- `docker image pull <image name>` - pull image from Docker hub
+
 
 ### Docker install/config
 
