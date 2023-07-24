@@ -41,11 +41,47 @@ a3ed95caeb02: Pull complete
 
 - `docker container top <container id>` - show running processes in container
 
+### Docker Ubuntu vs Alpine vs Centos vs Debian vs Fedora vs Oracle Linux vs Red Hat Enterprise Linux vs SUSE Linux Enterprise Server
+
+Ubuntu: https://hub.docker.com/_/ubuntu
+Alpine: https://hub.docker.com/_/alpine
+Centos: https://hub.docker.com/_/centos
+Debian: https://hub.docker.com/_/debian
+Fedora: https://hub.docker.com/_/fedora
+Oracle Linux: https://hub.docker.com/_/oraclelinux
+Red Hat Enterprise Linux: https://hub.docker.com/_/rhel
+SUSE Linux Enterprise Server: https://hub.docker.com/_/suse
+
+- Ubuntu is the most popular Linux distribution for running Docker containers. It is the most similar to Debian.
+- Alpine is the most lightweight Linux distribution for running Docker containers. It is the most secure Linux distribution.
+- Centos is the most popular Linux distribution for running Docker containers. It is the most similar to Red Hat Enterprise Linux.
+- Debian is the most popular Linux distribution for running Docker containers. It is the most similar to Ubuntu.
+- Fedora is the most popular Linux distribution for running Docker containers. It is the most similar to Red Hat Enterprise Linux.
+- Oracle Linux is the most popular Linux distribution for running Docker containers. It is the most similar to Red Hat Enterprise Linux.
+- Red Hat Enterprise Linux is the most popular Linux distribution for running Docker containers. It is the most similar to Centos.
+- SUSE Linux Enterprise Server is the most popular Linux distribution for running Docker containers. It is the most similar to Red Hat Enterprise Linux.
+
+
 ### Docker Proces Monitoring
 
 - `docker container top <container id>` - show running processes in container
 - `docker container inspect <container id>` - show metadata about container (including process ID)
 - `docker container stats` - show live performance stats for all containers
+
+### Getting inside a container
+
+- `docker container run -it <container id> <command>` - run additional command in new container
+- `docker container exec -it <container id> <command>` - run additional command in existing container
+
+- `docker container run -it --name proxy nginx bash` - run nginx container in background and map port 80 to 80 and name it webhost
+- `docker container exec -it <container id> bash` - run bash in existing container
+
+- `docker container run -it --name ubuntu ubuntu` - run ubuntu container in background and map port 80 to 80 and name it webhost
+    - `apt-get update` - update ubuntu
+    - `apt-get install curl` - install curl
+
+- `docker container exec -it <container id> bash` - run bash in existing container
+- `docker container run -it alpine sh` - run bash in new container (alpine is a lightweight Linux distribution does not come with bash by default, so use sh instead of bash or install bash with `apk add bash`)
 
 ### Docker Networking
 
@@ -57,6 +93,11 @@ a3ed95caeb02: Pull complete
 - `docker network connect <network name> <container id>` - connect container to network
 - `docker network disconnect <network name> <container id>` - disconnect container from network
 
+Example:
+- ` docker container run -p 80:80 --name webhost -d nginx` - run nginx container in background and map port 80 to 80 and name it webhost
+- `docker container port webhost` - show port mapping of container
+- `docker container inspect --format '{{ .NetworkSettings.IPAddress }}' webhost` - show IP address of container
+
 ### Docker Images
 
 - `docker image ls` - list images
@@ -66,7 +107,6 @@ a3ed95caeb02: Pull complete
 - `docker image build -t <image name> .` - build image from Dockerfile
 - `docker image push <image name>` - push image to Docker hub
 - `docker image pull <image name>` - pull image from Docker hub
-
 
 ### Docker install/config
 
