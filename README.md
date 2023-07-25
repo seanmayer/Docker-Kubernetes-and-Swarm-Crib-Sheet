@@ -55,6 +55,7 @@ SUSE Linux Enterprise Server: https://hub.docker.com/_/suse
 - Ubuntu is the most popular Linux distribution for running Docker containers. It is the most similar to Debian.
 - Alpine is the most lightweight Linux distribution for running Docker containers. It is the most secure Linux distribution.
 - Centos is the most popular Linux distribution for running Docker containers. It is the most similar to Red Hat Enterprise Linux.
+    - Centos tends to lag behind Red Hat Enterprise Linux in terms of updates
 - Debian is the most popular Linux distribution for running Docker containers. It is the most similar to Ubuntu.
 - Fedora is the most popular Linux distribution for running Docker containers. It is the most similar to Red Hat Enterprise Linux.
 - Oracle Linux is the most popular Linux distribution for running Docker containers. It is the most similar to Red Hat Enterprise Linux.
@@ -93,6 +94,37 @@ SUSE Linux Enterprise Server: https://hub.docker.com/_/suse
 - `docker network connect <network name> <container id>` - connect container to network
 - `docker network disconnect <network name> <container id>` - disconnect container from network
 
+Tips for networking in Docker containers (best practices):
+- Each container should have only one concern
+- Create your apps so frontend/backend sit on same Docker network
+- Their inter-communication never leaves host
+- All externally exposed ports closed by default
+- You must manually expose via -p, which is better default security
+- This gets even better with Docker Swarm and Overlay networks
+
+#### Docker Networking: DNS
+
+- You cannot rely on IP addresses to communicate between containers
+- Use Docker DNS to allow containers to resolve each other by name
+- Docker daemon has a built-in DNS server that containers use by default
+- Try this: `docker container run -d --name my_nginx --network my_app_net nginx`
+    - Ping the DNS: `docker container exec -it my_nginx ping new_nginx`
+- Linking containers is a legacy feature
+    - DNS is now the preferred method of inter-communication
+    - Linking still works, but is not recommended
+    - Linking may be removed in future versions of Docker
+
+#### Docker Networking: DNS Round Robin Test
+
+- Round Robin DNS is a technique of load distribution, load balancing, or fault-tolerance provisioning multiple, redundant Internet Protocol service hosts, e.g., Web server, FTP servers, by managing the Domain Name System's (DNS) responses to address requests from client computers according to an appropriate statistical model.
+- Multiple containers can resolve to the same DNS name, and Docker will load balance requests between them
+
+- Create a network: `docker network create dude`
+- Run 2 containers: `docker container run -d --net dude --net-alias search elasticsearch:2`
+- Run 2 containers: `docker container run -d --net dude --net-alias search elasticsearch:2`
+- Run 1 container: `docker container run --rm --net dude alpine nslookup search` # Should return 2 IP addresses
+- Run 1 container: `docker container run --rm --net dude centos curl -s search:9200` # Should return html
+
 Example:
 - ` docker container run -p 80:80 --name webhost -d nginx` - run nginx container in background and map port 80 to 80 and name it webhost
 - `docker container port webhost` - show port mapping of container
@@ -107,6 +139,46 @@ Example:
 - `docker image build -t <image name> .` - build image from Dockerfile
 - `docker image push <image name>` - push image to Docker hub
 - `docker image pull <image name>` - pull image from Docker hub
+
+### Dockerfile
+
+- `docker image build -t <image name> .` - build image from Dockerfile
+
+Example:
+```
+FROM nginx:latest
+WORKDIR /usr/share/nginx/html
+COPY index.html index.html
+```
+
+Dockerfile commands:
+- FROM - base image
+- LABEL - metadata
+- RUN - run command in container
+- COPY - copy files from host to container
+- ADD - copy files from host to container (can also download files from internet)
+- CMD - run command when container starts
+- EXPOSE - expose port when container starts
+- ENV - set environment variable
+- ENTRYPOINT - run command when container starts (preferred over CMD)
+- VOLUME - create mount point and mark as holding externally mounted volumes from native host or other containers
+- USER - set user name or UID
+- WORKDIR - set working directory
+- ARG - define build-time variable
+- ONBUILD - adds trigger instruction when image is used as the base for another build
+- STOPSIGNAL - sets the system call signal that will be sent to the container to exit
+- HEALTHCHECK - tells Docker how to test a container to check that it is still working
+- SHELL - override default shell
+
+### Keeping Docker system clean
+
+- `docker container prune` - remove all stopped containers
+- `docker image prune` - remove unused images
+- `docker system prune` - remove all unused data
+
+### Docker logging
+
+stdout and stderr are the output streams from a Linux process. By default, stdout and stderr are output to the console (your terminal window) where you started the process. You can redirect stdout and stderr to a file by using the > and 2> redirect symbols respectively.
 
 ### Docker install/config
 
