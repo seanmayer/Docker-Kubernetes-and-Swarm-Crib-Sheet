@@ -170,6 +170,43 @@ Dockerfile commands:
 - HEALTHCHECK - tells Docker how to test a container to check that it is still working
 - SHELL - override default shell
 
+### Docker persistent data
+
+- Two ways to deal with persistent data:
+    - Volumes
+    - Bind mounts
+
+- Volumes:
+    - Make special location outside of container UFS
+    - Used for databases
+    - When the container is removed, the volume still exists
+    - Volumes can be shared and reused among containers
+    - Changes to a volume are made directly
+    - Changes to a volume will not be included when you update an image
+    - Volumes persist until no containers use them
+    - Volumes are the best way to persist data in Docker
+
+    - In dockerfile:
+        - `VOLUME /var/lib/mysql` - create volume in container, where the volume is stored on the host machine (in this case, the volume is stored in /var/lib/docker/volumes/ on the host machine)
+
+    - Docker volume commands:
+        - `docker volume ls` - list volumes
+        - `docker volume inspect <volume name>` - show metadata about volume
+        - `docker volume create <volume name>` - create volume
+        - `docker volume rm <volume name>` - remove volume
+        - `docker volume prune` - remove all unused volumes
+        - `docker container run -d --name mysql -e MYSQL_ALLOW_EMPTY_PASSWORD=True -v mysql-db:/var/lib/mysql mysql` - create mysql container with named volume mysql-db
+
+- Bind mounts:
+    - Link container path to host path
+    - Used for development
+    - When the container is removed, the bind mount is removed
+    - Changes to a bind mount are immediately visible on the host
+    - Changes to a bind mount will not be included when you update an image
+    - Bind mounts persist until you delete them
+
+    - `docker container run -d --name nginx -p 80:80 -v $(pwd):/usr/share/nginx/html nginx` - create nginx container with bind mount (pwd is the current directory) (this command will not work on Windows)
+
 ### Keeping Docker system clean
 
 - `docker container prune` - remove all stopped containers
