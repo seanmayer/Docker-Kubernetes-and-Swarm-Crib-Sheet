@@ -170,6 +170,62 @@ Dockerfile commands:
 - HEALTHCHECK - tells Docker how to test a container to check that it is still working
 - SHELL - override default shell
 
+### Docker Compose
+
+- Why use Docker Compose?
+    - configure relationships between containers
+    - save our docker container run settings in easy-to-read file
+    - create one-liner developer environment startups
+    - Compose is great for local development, test and CI workflows
+    - Staging and production deployments
+    - Swarm and Kubernetes
+
+- Difference between Docker Compose and Dockerfile:
+    - Dockerfile is used to build images
+    - Docker Compose is used to run containers
+
+- Difference between Docker Compose and Docker Swarm:
+    - Docker Compose is for local development
+    - Docker Swarm is for production deployments
+
+- `docker compose up` - start container
+- `docker compose up -d` - start container in background
+- `docker compose down` - stop container
+- `docker compose down --rmi local` - stop container and remove image
+
+- `docker compose ps` - list containers
+- `docker compose top` - show running processes in container
+- `docker compose logs` - show logs of container
+
+- `docker compose build` - build image from Dockerfile (e.g. /docker-compose.yml)
+- `docker compose push` - push image to Docker hub
+
+- `docker compose config` - validate and view the compose file
+
+- `docker compose up -d --scale <service name>=<number of containers>` - start container in background and scale number of containers
+
+- docker-compose.yml:
+```
+version: '3.1'
+
+services:
+  web:
+    image: nginx:latest
+    ports:
+      - 80:80
+    volumes:
+      - ./html:/usr/share/nginx/html
+    networks:
+      - webnet
+  redis:
+    image: redis:latest
+    networks:
+      - webnet
+networks:
+    webnet:
+``` 
+    - compose yaml syntax: https://docs.docker.com/compose/compose-file/compose-file-v3/
+
 ### Docker persistent data
 
 - Two ways to deal with persistent data:
@@ -205,7 +261,34 @@ Dockerfile commands:
     - Changes to a bind mount will not be included when you update an image
     - Bind mounts persist until you delete them
 
-    - `docker container run -d --name nginx -p 80:80 -v $(pwd):/usr/share/nginx/html nginx` - create nginx container with bind mount (pwd is the current directory) (this command will not work on Windows)
+### Bind mounts - local files and running apps on containers
+
+- `docker container run -d --name nginx -p 80:80 -v $(pwd):/usr/share/nginx/html nginx` - create nginx container with bind mount (pwd is the current directory) (this command will not work on Windows)
+
+### How to upgrade a database and keep data persistent
+
+- Create a named volume: `docker volume create postgres-db`
+- `docker container run -d --name postgres -v postgres-db:/var/lib/postgresql/data postgres:13-bullseye` - create postgres container with named volume postgres-db
+- `docker logs postgres` - show logs of postgres container
+- `docker stop postgres` - stop postgres container
+- `docker container run -d --name postgres-new -v postgres-db:/var/lib/postgresql/data postgres:13.11-bullseye` - create postgres-new container with named volume postgres-db
+- `docker logs postgres-new` - show logs of postgres-new container
+- `docker stop postgres-new` - stop postgres-new container
+
+### File permissions across multiple containers
+
+- use ps aux to find out the user id of the process running in the container
+- find uid/gid of user in container: `etc/passwd` (uid:gid) and `etc/group` (gid) files to find out the uid/gid of the user running the process in the container
+- find uid/gid if both containers are running with the matching user ID (uid) and group ID (gid)
+- if the uid/gid of the user running the process in the container does not match the uid/gid of the user running the process in the container, then you will need to change the uid/gid of the user running the process in the container to match the uid/gid of the user running the process in the container
+- dockerfile:
+```
+FROM nginx:latest
+RUN groupadd --gid 1000 node \\
+    && useradd --uid 1000 --gid node --shell /bin/bash --create-home node
+USER 1000:1000
+```
+- Tip setting up Dockerfiles USER with numbers works better than names in Kubernetes
 
 ### Keeping Docker system clean
 
@@ -275,10 +358,73 @@ An image is a file that contains all the dependencies and configuration required
 6. Opens up port on host and forwards to port in container
 7. Starts container by using the CMD in the image Dockerfile
 
+### Docker Swarm - orchestration
 
+#### Managing multiple containers the problems:
 
+- How do we automate container lifecycle?
+- How do we scale containers horizontally?
+- How do we ensure containers are re-created if they fail?
+- How do we ensure containers are running on all nodes?
+- How do we ensure the right containers are running on the right nodes?
+- How can we replae containers without downtime (blue/green deployment)?
+- How can we control/track where containers get started?
+- How can we create cross-node virtual networks?
+- How can we ensure only trusted servers run our containers?
+- How can we store secrets, keys, passwords and get them to the right container when it needs it?
 
+#### What is Docker Swarm?
 
+- Swarm is Docker's orchestration tool
+- Swarm is built inside Docker
+- Swarm is a clustering and scheduling tool for Docker containers
+- Swarm is the native clustering engine for Docker
+- Swarm is a group of Docker engines running in swarm mode
+- Not enabled by default, new commands when enabled
+    - `docker swarm` - manage swarm
+    - `docker node` - manage swarm nodes
+    - `docker service` - manage services
+    - `docker stack` - manage Docker stacks
+    - `docker secret` - manage secrets
+
+#### Docker Swarm - manager nodes:
+
+- Manager nodes are responsible for maintaining the desired state of the swarm
+- Manager nodes elect a leader to conduct orchestration tasks
+- Manager nodes maintain the cluster state
+- Manager nodes schedule services
+- Manager nodes serve as the swarm HTTP API endpoints
+- Manager nodes enforce policies
+- Manager nodes encrypt/decrypt secrets
+- Manager nodes are the only nodes where you can run `docker swarm` commands
+
+#### Docker Swarm - worker nodes:
+
+- Worker nodes receive and execute tasks dispatched from manager nodes
+- Worker nodes run containers and services
+- Worker nodes report back to manager nodes
+
+Docker swarm commands:
+- `docker info` - check if swarm is active
+- `docker swarm init` - initialize swarm
+- `docker node ls` - list nodes in swarm
+- `docker service create alpine ping 8.8.8.8` - create service
+- `docker service ls` - list services
+- `docker service ps <service name>` - list tasks in service
+- `docker service update <service name> --replicas <number of replicas>` - update service
+- `docker service ls` - list services (replicas column shows number of replicas)
+- `docker service ps <service name>` - list tasks in service (desired state column shows number of replicas)
+- `docker update --help` - show help for update command (e.g. `docker service update --help`, this command shows help for service update command)
+
+#### Docker Swarm - Creating 3 Node Swarm Cluster
+
+- Create 3 VMs (e.g. using VirtualBox)
+- Install Docker on each VM (e.g. `curl -fsSL https://get.docker.com -o get-docker.sh` and `sudo sh get-docker.sh`)
+- Initialize swarm on one VM (e.g. `docker swarm init --advertise-addr` and `docker swarm join-token`)
+- Join other VMs to swarm as worker nodes e.g. `docker swarm join --token SWMTKN-xxxx `
+- Run `docker node ls` on manager node to verify swarm is active
+- Run `docker node update --role manager <node id>` on manager node to promote worker node to manager node
+- Run `docker swarm join-token manager` on manager node to get join token for manager node
 
 Test: `curl localhost:8800` # Should return html
 
