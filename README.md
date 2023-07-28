@@ -386,6 +386,7 @@ An image is a file that contains all the dependencies and configuration required
     - `docker service` - manage services
     - `docker stack` - manage Docker stacks
     - `docker secret` - manage secrets
+    - `docker config` - manage Docker configs
 
 #### Docker Swarm - manager nodes:
 
