@@ -65,9 +65,16 @@ SUSE Linux Enterprise Server: https://hub.docker.com/_/suse
 
 ### Docker Proces Monitoring
 
+#### Commands for process monitoring
 - `docker container top <container id>` - show running processes in container
 - `docker container inspect <container id>` - show metadata about container (including process ID)
 - `docker container stats` - show live performance stats for all containers
+
+#### Commands for process management
+- `docker system df` - show docker disk usage
+- `docker system events` - show docker system events
+- `docker system info` - show docker system info
+- `docker system prune` - remove all unused containers, networks, images (both dangling and unreferenced), and optionally, volumes
 
 ### Getting inside a container
 
@@ -295,6 +302,7 @@ USER 1000:1000
 - `docker container prune` - remove all stopped containers
 - `docker image prune` - remove unused images
 - `docker system prune` - remove all unused data
+- `docker system prune -a` - remove all unused data (including unused images)
 
 ### Docker logging
 
