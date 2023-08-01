@@ -437,6 +437,17 @@ Docker swarm commands:
 
 Test: `curl localhost:8800` # Should return html
 
+#### Docker Swarm - Overlay Networking
+
+- Overlay networking is a built-in docker network driver
+- Overlay networking enables multi-host communication
+- Overlay networking requires a key-value store
+- Overlay networking requires a routing mesh
+- Overlay networking is the default network driver for swarm services
+- Overlay networking is the best way to network containers across multiple hosts
+
+- `docker network create --driver overlay <network name>` - create overlay network
+
 ### Recommended VS Code extensions
 
 - Docker (allows you to run docker commands from VS Code)
