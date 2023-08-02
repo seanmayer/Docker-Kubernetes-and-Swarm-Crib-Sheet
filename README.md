@@ -447,6 +447,17 @@ Test: `curl localhost:8800` # Should return html
 - Overlay networking is the best way to network containers across multiple hosts
 
 - `docker network create --driver overlay <network name>` - create overlay network
+- `docker service create --name <service name> --network <network name> <image name>` - create service with overlay network
+- `docker service ls` - list services
+- `docker service ps <service name>` - list tasks in service
+- `docker container logs <container id>` - show logs of container
+
+#### Docker Swarm - Routing Mesh
+
+- Routing mesh routes ingress (incoming) packets for a Service to proper Task
+- Routing mesh routes packets on a Service's published ports
+- Routing mesh routes packets for a Service to proper Node
+- Routing mesh uses IPVS from Linux kernel
 
 ### Recommended VS Code extensions
 
