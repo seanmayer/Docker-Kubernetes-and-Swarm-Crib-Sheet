@@ -452,6 +452,15 @@ Test: `curl localhost:8800` # Should return html
 - `docker service ps <service name>` - list tasks in service
 - `docker container logs <container id>` - show logs of container
 
+#### Docker Swarm - if we had 3 replicas and it created 3 tasks with 3 containers on 3 nodes
+
+- Inside that overlay network, it creates a virtual IP that is mapped to the dns name of the service
+- The "web" will load balance between the 3 containers
+- This is not DNS round robin, this is a virtual IP that is mapped to the dns name of the service
+- The benefits over DNS round robin is that it is faster
+
+![Screenshot](images/vip-mapped.png)
+
 #### Docker Swarm - Routing Mesh
 
 - Routing mesh routes ingress (incoming) packets for a Service to proper Task
