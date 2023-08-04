@@ -4,7 +4,6 @@
 Play with Docker: https://labs.play-with-docker.com/
 Docker hub: https://hub.docker.com/
 
-
 ### Docker commands
 `docker run -d -p 8800:80 httpd` # Run httpd container in background and map port 80 to 8800
 
@@ -459,7 +458,7 @@ Test: `curl localhost:8800` # Should return html
 - This is not DNS round robin, this is a virtual IP that is mapped to the dns name of the service
 - The benefits over DNS round robin is that it is faster
 
-![Screenshot](images/vip-mapped.png)
+![vip-mapped](images/vip-mapped.png)
 
 #### Docker Swarm - Routing Mesh
 
