@@ -3,6 +3,12 @@
 ## Docker
 Play with Docker: https://labs.play-with-docker.com/
 Docker hub: https://hub.docker.com/
+Docker docs: https://docs.docker.com/
+Dockerfile reference: https://docs.docker.com/engine/reference/builder/
+Docker compose file reference: https://docs.docker.com/compose/compose-file/
+Docker swarm mode: https://docs.docker.com/engine/swarm/
+Docker swarm mode key concepts: https://docs.docker.com/engine/swarm/key-concepts/
+Docker swarm mode tutorial: https://docs.docker.com/engine/swarm/swarm-tutorial/
 
 ### Docker commands
 `docker run -d -p 8800:80 httpd` # Run httpd container in background and map port 80 to 8800
@@ -132,7 +138,7 @@ Tips for networking in Docker containers (best practices):
 - Run 1 container: `docker container run --rm --net dude centos curl -s search:9200` # Should return html
 
 Example:
-- ` docker container run -p 80:80 --name webhost -d nginx` - run nginx container in background and map port 80 to 80 and name it webhost
+- `docker container run -p 80:80 --name webhost -d nginx` - run nginx container in background and map port 80 to 80 and name it webhost
 - `docker container port webhost` - show port mapping of container
 - `docker container inspect --format '{{ .NetworkSettings.IPAddress }}' webhost` - show IP address of container
 
@@ -298,10 +304,11 @@ USER 1000:1000
 
 ### Keeping Docker system clean
 
-- `docker container prune` - remove all stopped containers
-- `docker image prune` - remove unused images
-- `docker system prune` - remove all unused data
+- `docker container prune` - remove all stopped containers (both dangling and unreferenced)
+- `docker image prune` - remove unused images (both dangling and unreferenced)
+- `docker system prune` - remove all unused data (including unused images)
 - `docker system prune -a` - remove all unused data (including unused images)
+
 
 ### Docker logging
 
