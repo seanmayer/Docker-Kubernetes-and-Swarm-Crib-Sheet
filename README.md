@@ -458,7 +458,7 @@ Test: `curl localhost:8800` # Should return html
 - `docker service ps <service name>` - list tasks in service
 - `docker container logs <container id>` - show logs of container
 
-#### Docker Swarm - if we had 3 replicas and it created 3 tasks with 3 containers on 3 nodes
+#### Docker Swarm - if I created a new swarm service and we had 3 replicas and it created 3 tasks with 3 containers on 3 nodes
 
 - Inside that overlay network, it creates a virtual IP that is mapped to the dns name of the service
 - The "web" will load balance between the 3 containers
@@ -466,6 +466,15 @@ Test: `curl localhost:8800` # Should return html
 - The benefits over DNS round robin is that it is faster
 
 ![vip-mapped](images/vip-mapped.png)
+
+#### Docker Swarm - Example 2 - of external traffic hitting the load balancer
+
+- Similar to (Docker Networking: DNS Round Robin Test section)
+- Here we are creating one service called `web` and it created two tasks and applied them to different two nodes, each one of the nodes has a built in load balancer on the external ip address
+- Any traffic that hits port 8080 on any of these 3 nodes, the load balancer will load balance between the container whether this is on a local node or a remote node (this all happens in the background)
+
+![ingress-network](images/ingress-network.png)
+
 
 #### Docker Swarm - Routing Mesh
 
