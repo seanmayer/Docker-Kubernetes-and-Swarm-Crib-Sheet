@@ -472,6 +472,7 @@ Test: `curl localhost:8800` # Should return html
 - Similar to (Docker Networking: DNS Round Robin Test section)
 - Here we are creating one service called `web` and it created two tasks and applied them to different two nodes, each one of the nodes has a built in load balancer on the external ip address
 - Any traffic that hits port 8080 on any of these 3 nodes, the load balancer will load balance between the container whether this is on a local node or a remote node (this all happens in the background)
+- This is not DNS round robin, this is a virtual IP that is mapped to the dns name of the service
 
 ![ingress-network](images/ingress-network.png)
 
