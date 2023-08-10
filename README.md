@@ -476,6 +476,21 @@ Test: `curl localhost:8800` # Should return html
 
 ![ingress-network](images/ingress-network.png)
 
+Lets see the routing mesh in action:
+
+- `docker service create --name search --replicas 3 -p 9200:9200 elasticsearch:2` (elasticsearch is a search engine)
+- `docker ps search` (3 containers running on 3 different nodes)
+- `curl localhost:9200` (curl the load balancer on any node and it will load balance between the 3 containers)
+
+Routing mesh
+
+Limitations:
+- This is a stateless load balancer
+- This load balancer is at layer 3 (TCP), not layer 4 (DNS)
+
+How to get around this limitation:
+- Use a layer 7 load balancer (e.g. HAProxy, Nginx, Traefik, etc)
+- Docker Enterprise Edition has a built-in L4 web proxy
 
 #### Docker Swarm - Routing Mesh
 
