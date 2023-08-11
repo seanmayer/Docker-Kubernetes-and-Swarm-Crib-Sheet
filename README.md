@@ -443,7 +443,9 @@ Docker swarm commands:
 
 Test: `curl localhost:8800` # Should return html
 
-#### Docker Swarm - Overlay Networking
+#### Docker Swarm 
+
+##### Docker Swarm - Overlay Networking
 
 - Overlay networking is a built-in docker network driver
 - Overlay networking enables multi-host communication
@@ -458,7 +460,7 @@ Test: `curl localhost:8800` # Should return html
 - `docker service ps <service name>` - list tasks in service
 - `docker container logs <container id>` - show logs of container
 
-#### Docker Swarm - if I created a new swarm service and we had 3 replicas and it created 3 tasks with 3 containers on 3 nodes
+##### Docker Swarm - if I created a new swarm service and we had 3 replicas and it created 3 tasks with 3 containers on 3 nodes
 
 - Inside that overlay network, it creates a virtual IP that is mapped to the dns name of the service
 - The "web" will load balance between the 3 containers
@@ -467,7 +469,7 @@ Test: `curl localhost:8800` # Should return html
 
 ![vip-mapped](images/vip-mapped.png)
 
-#### Docker Swarm - Example 2 - of external traffic hitting the load balancer
+##### Docker Swarm - Example 2 - of external traffic hitting the load balancer
 
 - Similar to (Docker Networking: DNS Round Robin Test section)
 - Here we are creating one service called `web` and it created two tasks and applied them to different two nodes, each one of the nodes has a built in load balancer on the external ip address
@@ -482,7 +484,12 @@ Lets see the routing mesh in action:
 - `docker ps search` (3 containers running on 3 different nodes)
 - `curl localhost:9200` (curl the load balancer on any node and it will load balance between the 3 containers)
 
-Routing mesh
+##### Docker Swarm - Routing Mesh
+
+- Routing mesh routes ingress (incoming) packets for a Service to proper Task
+- Routing mesh routes packets on a Service's published ports
+- Routing mesh routes packets for a Service to proper Node
+- Routing mesh uses IPVS from Linux kernel
 
 Limitations:
 - This is a stateless load balancer
@@ -492,12 +499,10 @@ How to get around this limitation:
 - Use a layer 7 load balancer (e.g. HAProxy, Nginx, Traefik, etc)
 - Docker Enterprise Edition has a built-in L4 web proxy
 
-#### Docker Swarm - Routing Mesh
+#### Docker Swarm - Create a multi-service multi-node app
 
-- Routing mesh routes ingress (incoming) packets for a Service to proper Task
-- Routing mesh routes packets on a Service's published ports
-- Routing mesh routes packets for a Service to proper Node
-- Routing mesh uses IPVS from Linux kernel
+- Using Docker's distributed voting app
+
 
 ### Recommended VS Code extensions
 
