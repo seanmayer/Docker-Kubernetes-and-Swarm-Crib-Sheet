@@ -10,6 +10,19 @@ Docker swarm mode: https://docs.docker.com/engine/swarm/
 Docker swarm mode key concepts: https://docs.docker.com/engine/swarm/key-concepts/
 Docker swarm mode tutorial: https://docs.docker.com/engine/swarm/swarm-tutorial/
 
+History: https://en.wikipedia.org/wiki/Docker_(software)
+
+### What is Docker?
+
+- Docker is a platform for building, running and shipping applications
+- Docker is a container platform
+- Docker is a tool designed to make it easier to create, deploy, and run applications by using containers
+- Docker is a tool that allows developers, sys-admins etc. to easily deploy their applications in a sandbox (called containers) to run on the host operating system i.e. Linux
+- Docker is a tool that can package an application and its dependencies in a virtual container that can run on any Linux server
+- Docker is a tool that allows you to run your application in a virtual container
+- Docker is a tool that allows you to package your application and its dependencies in a virtual container that you can run on any Linux server
+- Docker is a tool that allows you to run your application in a virtual container that you can run on any Linux server
+
 ### Docker commands
 `docker run -d -p 8800:80 httpd` # Run httpd container in background and map port 80 to 8800
 
@@ -66,7 +79,6 @@ SUSE Linux Enterprise Server: https://hub.docker.com/_/suse
 - Oracle Linux is the most popular Linux distribution for running Docker containers. It is the most similar to Red Hat Enterprise Linux.
 - Red Hat Enterprise Linux is the most popular Linux distribution for running Docker containers. It is the most similar to Centos.
 - SUSE Linux Enterprise Server is the most popular Linux distribution for running Docker containers. It is the most similar to Red Hat Enterprise Linux.
-
 
 ### Docker Proces Monitoring
 
@@ -334,7 +346,6 @@ stdout and stderr are the output streams from a Linux process. By default, stdou
       - `docker system` - manage Docker
       - `docker volume` - manage volumes
 
-
 ### What is a container?
 
 A container is a process or group of processes that are isolated from the rest of the system. It has its own file system, networking, etc. It is a process that is running on the host machine.
@@ -347,7 +358,6 @@ A container is a process or group of processes that are isolated from the rest o
 
 - Nginx (web server) is a container that runs on the host machine
     - https://www.nginx.com/resources/glossary/nginx/ (open source software for web serving, reverse proxying, caching, load balancing, media streaming, and more)
-
 
 ### What is image?
 
@@ -502,7 +512,6 @@ How to get around this limitation:
 #### Docker Swarm - Create a multi-service multi-node app
 
 - Using Docker's distributed voting app
-
 
 ### Recommended VS Code extensions
 
