@@ -23,6 +23,15 @@ History: https://en.wikipedia.org/wiki/Docker_(software)
 - Docker is a tool that allows you to package your application and its dependencies in a virtual container that you can run on any Linux server
 - Docker is a tool that allows you to run your application in a virtual container that you can run on any Linux server
 
+### Why use Docker?
+
+- Docker enables you to separate your applications from your infrastructure so you can deliver software quickly
+- With Docker, you can manage your infrastructure in the same ways you manage your applications
+- By taking advantage of Docker's methodologies for shipping, testing, and deploying code quickly, you can significantly reduce the delay between writing code and running it in production
+- Docker enables you to separate your applications from your infrastructure so you can deliver software quickly
+- With Docker, you can manage your infrastructure in the same ways you manage your applications
+- By taking advantage of Docker's methodologies for shipping, testing, and deploying code quickly, you can significantly reduce the delay between writing code and running it in production
+
 ### Docker commands
 `docker run -d -p 8800:80 httpd` # Run httpd container in background and map port 80 to 8800
 
