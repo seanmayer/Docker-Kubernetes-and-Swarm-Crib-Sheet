@@ -521,6 +521,53 @@ How to get around this limitation:
 #### Docker Swarm - Create a multi-service multi-node app
 
 - Using Docker's distributed voting app
+- 1 volume, 2 networks, 5 services required
+
+##### Services:
+
+- vote
+    - dockersamples/examplevotingapp_vote:before
+    - web front-end
+    - port 80 (TCP) (published)
+    - 2 replicas
+    - network: front-tier
+- redis
+    - redis:alpine
+    - in-memory database (key-value store)
+    - no public ports
+    - 2 replica
+    - network: front-tier
+- worker
+    - dockersamples/examplevotingapp_worker
+    - backend processor for redis and postgres
+    - no public ports
+    - 1 replica
+    - network: front-tier, back-tier
+- db
+    - postgres:9.4
+    - one named volume, pointing to /var/lib/postgresql/data
+    - no public ports
+    - 1 replica
+    - network: back-tier
+- result
+    - dockersamples/examplevotingapp_result:before
+    - web front-end for results (admin)
+    - port 80 (TCP) (published)
+    - 1 replica
+    - network: back-tier
+
+##### Step by step through this design:
+
+- Create overlay networks:
+    - `docker network create --driver overlay front-tier`
+    - `docker network create --driver overlay back-tier`
+
+- Create service vote:
+    - `docker service create --name vote --replicas 2 --network front-tier -p 80:80 dockersamples/examplevotingapp_vote:before`
+    - `docker service create --name redis --replicas 1 --network front-tier redis:alpine`
+    - `docker service create --name worker --replicas 1 --network front-tier --network back-tier dockersamples/examplevotingapp_worker`
+    - `docker service create --name db --replicas 1 --network back-tier -mount type=volume,source=db-data,target=/var/lib/postgresql/data postgres:9.4`
+    - `docker service create --name result --replicas 1 --network back-tier -p 5001:80 dockersamples/examplevotingapp_result:before`
 
 ### Recommended VS Code extensions
 
