@@ -503,7 +503,7 @@ Lets see the routing mesh in action:
 - `docker ps search` (3 containers running on 3 different nodes)
 - `curl localhost:9200` (curl the load balancer on any node and it will load balance between the 3 containers)
 
-##### Docker Swarm - Routing Mesh
+#### Docker Swarm - Routing Mesh
 
 - Routing mesh routes ingress (incoming) packets for a Service to proper Task
 - Routing mesh routes packets on a Service's published ports
@@ -568,6 +568,23 @@ How to get around this limitation:
     - `docker service create --name worker --replicas 1 --network front-tier --network back-tier dockersamples/examplevotingapp_worker`
     - `docker service create --name db --replicas 1 --network back-tier -mount type=volume,source=db-data,target=/var/lib/postgresql/data postgres:9.4`
     - `docker service create --name result --replicas 1 --network back-tier -p 5001:80 dockersamples/examplevotingapp_result:before`
+
+- Test:
+    - `docker service ls` (5 services)
+    - `docker service ps <service name>` (5 services)
+    - `docker service logs <service name>` (5 services)
+    - `curl localhost:80` (vote)
+    - `curl localhost:5001` (result)
+
+#### Docker Swarm - Stacks
+
+- Stacks are a group of interrelated services that share dependencies, and can be orchestrated and scaled together
+- Stacks are the next evolution of Docker Compose
+- Stacks are the best way to deploy a multi-service app to Docker Swarm
+- Stacks are written in YAML (just like Docker Compose files)
+- Stacks are deployed using `docker stack deploy` command
+- Stacks are the future of multi-service deployments in Docker
+
 
 ### Recommended VS Code extensions
 
