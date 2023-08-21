@@ -585,6 +585,8 @@ How to get around this limitation:
 - Stacks are deployed using `docker stack deploy` command
 - Stacks are the future of multi-service deployments in Docker
 
+example file: /example-voting-app.yml
+
 
 ### Recommended VS Code extensions
 
