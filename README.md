@@ -587,6 +587,29 @@ How to get around this limitation:
 
 example file: /example-voting-app.yml
 
+- `docker stack deploy -c example-voting-app.yml vote` - deploy stack
+- `docker stack ls` - list stacks
+- `docker stack ps <stack name>` - list tasks in stack
+- `docker stack services <stack name>` - list services in stack
+- `docker network ls` - list networks
+- `docker stack rm <stack name>` - remove stack
+
+#### Docker Swarm - Secrets
+
+- Secrets are how we manage sensitive data and passwords in Docker
+- Secrets are encrypted during transit and at rest in Docker Swarm
+- Secrets are only accessible to the containers that need them
+- Secrets are stored in an encrypted Raft log in Docker Swarm
+- Secrets can be added and removed from services while they are running
+- Secrets are never saved to disk, even on manager nodes
+- Secrets are only stored in memory on manager nodes
+- Secrets are never sent to the Docker daemon
+- Secrets are only sent over the Raft log to other manager nodes
+- Secrets are only stored in memory on worker nodes
+- Secrets are never written to disk on worker nodes
+- They look like files in the container file system (but they are actually in memory) (e.g. /run/secrets/<secret_name>) or (e.g. /run/secrets/<secret_alias>)
+- Local Docker Compose can use file-based secrets (not encrypted - not recommended for production)
+
 
 ### Recommended VS Code extensions
 
