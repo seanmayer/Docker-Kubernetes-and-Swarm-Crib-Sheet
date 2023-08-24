@@ -585,7 +585,9 @@ How to get around this limitation:
 - Stacks are deployed using `docker stack deploy` command
 - Stacks are the future of multi-service deployments in Docker
 
-example file: /example-voting-app.yml
+example file: swarm-examples/example-voting-app.yml
+
+##### Step by step through Stacks:
 
 - `docker stack deploy -c example-voting-app.yml vote` - deploy stack
 - `docker stack ls` - list stacks
@@ -610,6 +612,44 @@ example file: /example-voting-app.yml
 - They look like files in the container file system (but they are actually in memory) (e.g. /run/secrets/<secret_name>) or (e.g. /run/secrets/<secret_alias>)
 - Local Docker Compose can use file-based secrets (not encrypted - not recommended for production)
 
+##### Step by step through Secrets:
+
+- `docker secret create psql_user psql_user.txt` - create secret
+- `echo "testPwd" | docker secret create psql_pwd -` - create secret (from stdin)
+- `docker secret ls` - list secrets
+- `docker secret inspect psql_user` - show metadata about secret
+- `docker service create --name psql --secret psql_user --secret psql_pwd -e POSTGRES_PASSWORD_FILE=/run/secrets/psql_pwd postgres` - create service with secrets
+- `docker service ps psql` - list tasks in service
+- `docker exec -it <container id> bash` - run bash in container
+- `cat /run/secrets/psql_user` - show secret in container
+
+##### Step by step through Stacks and Secrets:
+
+example file: swarm-examples/example-voting-app-secrets.yml
+
+- `docker stack deploy -c example-voting-app-secrets.yml vote` - deploy stack
+- `docker stack rm vote` - remove stack
+
+How to use secrets in Docker Compose:
+
+- `docker-compose.yml`:
+```
+version: '3.1'
+
+services:
+  psql:
+    image: postgres
+    environment:
+      POSTGRES_PASSWORD_FILE: /run/secrets/psql_pwd
+    secrets:
+      - psql_user
+      - psql_pwd
+secrets:
+    psql_user:
+        file: ./psql_user.txt
+    psql_pwd:
+        file: ./psql_pwd.txt
+```
 
 ### Recommended VS Code extensions
 
