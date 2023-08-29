@@ -1,6 +1,6 @@
 # Docker, Kubernetes and Swarm Crib Sheet
 
-## Docker
+# Docker
 Play with Docker: https://labs.play-with-docker.com/
 Docker hub: https://hub.docker.com/
 Docker docs: https://docs.docker.com/
@@ -391,7 +391,7 @@ An image is a file that contains all the dependencies and configuration required
 6. Opens up port on host and forwards to port in container
 7. Starts container by using the CMD in the image Dockerfile
 
-### Docker Swarm - orchestration
+# Docker Swarm - orchestration
 
 #### Managing multiple containers the problems:
 
@@ -461,8 +461,6 @@ Docker swarm commands:
 - Run `docker swarm join-token manager` on manager node to get join token for manager node
 
 Test: `curl localhost:8800` # Should return html
-
-#### Docker Swarm 
 
 ##### Docker Swarm - Overlay Networking
 
@@ -556,7 +554,7 @@ How to get around this limitation:
     - 1 replica
     - network: back-tier
 
-##### Step by step through this design:
+##### Docker Swarm - Step by step through this design:
 
 - Create overlay networks:
     - `docker network create --driver overlay front-tier`
@@ -612,7 +610,7 @@ example file: swarm-examples/example-voting-app.yml
 - They look like files in the container file system (but they are actually in memory) (e.g. /run/secrets/<secret_name>) or (e.g. /run/secrets/<secret_alias>)
 - Local Docker Compose can use file-based secrets (not encrypted - not recommended for production)
 
-##### Step by step through Secrets:
+##### Docker Swarm - Step by step through Secrets:
 
 - `docker secret create psql_user psql_user.txt` - create secret
 - `echo "testPwd" | docker secret create psql_pwd -` - create secret (from stdin)
@@ -623,7 +621,7 @@ example file: swarm-examples/example-voting-app.yml
 - `docker exec -it <container id> bash` - run bash in container
 - `cat /run/secrets/psql_user` - show secret in container
 
-##### Step by step through Stacks and Secrets:
+##### Docker Swarm - Step by step through Stacks and Secrets:
 
 example file: swarm-examples/example-voting-app-secrets.yml
 
@@ -651,7 +649,7 @@ secrets:
         file: ./psql_pwd.txt
 ```
 
-### Recommended VS Code extensions
+# Recommended VS Code extensions
 
 - Docker (allows you to run docker commands from VS Code)
 - Kubernetes (allows you to run kubectl commands from VS Code)
