@@ -649,6 +649,29 @@ secrets:
         file: ./psql_pwd.txt
 ```
 
+##### Docker Swarm - Full app life cycle Dev Build and Deploy with a single Compose File
+
+File Structure:
+
+docker-compose.override.yml - (overrides the docker-compose.yml file) (e.g. `docker-compose -f docker-compose.yml -f docker-compose.override.yml up`
+docker-compose.prod.yml - (for production only) (e.g. `docker stack deploy -c docker-compose.prod.yml`)
+docker-compose.test.yml - (for testing only) (e.g. `docker-compose -f docker-compose.test.yml up --abort-on-container-exit`)
+docker-compose.yml - (for local dev, testing, and production) (e.g. `docker-compose up`)
+Dockerfile - (for building images) (e.g. `docker image build -t <image name> .`)
+psql_pwd.txt` - (for secrets) (e.g. `echo "testPwd" | docker secret create psql_pwd -`)
+
+
+##### Docker Swarm - Service Updates and Rollbacks
+
+- `docker service update --help` - show help for update command (e.g. `docker service update --help`, this command shows help for service update command)
+- `docker service update --image <image name> <service name>` - update service
+- `docker service update --rollback <service name>` - rollback service
+- `docker service update --force <service name>` - force update service
+- `docker service update --update-parallelism <number of replicas> <service name>` - update service
+- `docker service update --update-delay <number of seconds> <service name>` - update service (delay between updates)
+- `docker service update --env-add <environment variable> <service name> --publish-rm 8080` - update service (add environment variable) (remove published port)
+- `docker service scale <service name>=<number of replicas>` - scale service
+
 # Recommended VS Code extensions
 
 - Docker (allows you to run docker commands from VS Code)
