@@ -672,6 +672,17 @@ psql_pwd.txt` - (for secrets) (e.g. `echo "testPwd" | docker secret create psql_
 - `docker service update --env-add <environment variable> <service name> --publish-rm 8080` - update service (add environment variable) (remove published port)
 - `docker service scale <service name>=<number of replicas>` - scale service
 
+##### Docker Swarm - healthcheck in Dockerfile
+
+- `docker run --health-cmd="curl -f localhost:9200/_cluster/health || false" --health-interval=5s --health-retries=3 --health-timeout=2s --health-start-period=15s elasticsearch:2` - run elasticsearch container with healthcheck
+
+--health-cmd - command to run to check health
+--health-interval - time between running the healthcheck
+--health-retries - number of retries before marking unhealthy
+--health-timeout - time to wait before marking unhealthy   
+--health-start-period - time to wait before starting first healthcheck
+--no-healthcheck - disable healthcheck
+
 # Recommended VS Code extensions
 
 - Docker (allows you to run docker commands from VS Code)
