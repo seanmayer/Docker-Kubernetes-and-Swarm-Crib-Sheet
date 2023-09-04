@@ -683,6 +683,14 @@ psql_pwd.txt` - (for secrets) (e.g. `echo "testPwd" | docker secret create psql_
 --health-start-period - time to wait before starting first healthcheck
 --no-healthcheck - disable healthcheck
 
+# Docker Container Registry: Image Storage and Distribution
+
+##### What is a container registry?
+
+- A container registry is a place to store and distribute container images
+- A container registry is a collection of different Docker images with different versions
+- A container registry is a place to store and distribute Docker images
+
 # Recommended VS Code extensions
 
 - Docker (allows you to run docker commands from VS Code)
