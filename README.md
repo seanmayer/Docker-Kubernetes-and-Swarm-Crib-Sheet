@@ -691,6 +691,37 @@ psql_pwd.txt` - (for secrets) (e.g. `echo "testPwd" | docker secret create psql_
 - A container registry is a collection of different Docker images with different versions
 - A container registry is a place to store and distribute Docker images
 
+##### Docker Hub
+
+- Docker Hub is a public container registry
+- Docker Hub is free to use
+- Docker Hub is the default registry when you use `docker pull`
+- Docker Hub is the world's largest container registry
+- Docker Hub is the default registry for Docker Desktop
+- Docker Hub is the default registry for Docker Cloud
+
+##### Docker Store
+
+- Docker Store is a public container registry
+- Docker Store is free to use
+- Docker Store is the place to find trusted and enterprise ready containers
+- Docker Store is the place to find official images for Docker
+- Docker Store is the place to find certified images for Docker
+- Docker Store is the place to find plugins for Docker
+
+##### Docker Cloud
+
+- Docker Cloud is a public container registry
+- Docker Cloud is free to use
+- Docker Cloud is the place to find trusted and enterprise ready containers
+- Docker Cloud is the place to find official images for Docker
+- Docker Cloud is the place to find certified images for Docker
+- Docker Cloud is the place to find plugins for Docker
+
+##### Docker Hub - set up automated builds
+
+- https://docs.docker.com/docker-hub/builds/
+
 # Recommended VS Code extensions
 
 - Docker (allows you to run docker commands from VS Code)
