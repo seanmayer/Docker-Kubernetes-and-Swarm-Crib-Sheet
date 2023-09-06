@@ -722,6 +722,13 @@ psql_pwd.txt` - (for secrets) (e.g. `echo "testPwd" | docker secret create psql_
 
 - https://docs.docker.com/docker-hub/builds/
 
+- in Docker Hub, go to Create -> Create Automated Build
+- select GitHub or Bitbucket
+- select the repository
+- select the branch
+- select the Dockerfile location
+- select Create
+
 # Recommended VS Code extensions
 
 - Docker (allows you to run docker commands from VS Code)
