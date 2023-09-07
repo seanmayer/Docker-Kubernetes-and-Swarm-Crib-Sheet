@@ -729,6 +729,17 @@ psql_pwd.txt` - (for secrets) (e.g. `echo "testPwd" | docker secret create psql_
 - select the Dockerfile location
 - select Create
 
+##### Docker Registry
+
+- Docker Registry is an open source container registry
+- Docker Registry is free to use
+- Docker Registry is the default registry for Docker EE
+- Docker Registry is the default registry for Docker CE
+- Docker Registry is the default registry for Docker EE Basic
+- Docker Registry is the default registry for Docker EE Standard
+- Docker Registry is the default registry for Docker EE Advanced
+- github repository: github.com/docker/distribution (but your likely use docker registry image from Docker Hub)
+
 # Recommended VS Code extensions
 
 - Docker (allows you to run docker commands from VS Code)
