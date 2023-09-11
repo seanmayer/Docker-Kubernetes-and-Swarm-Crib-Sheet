@@ -732,13 +732,56 @@ psql_pwd.txt` - (for secrets) (e.g. `echo "testPwd" | docker secret create psql_
 ##### Docker Registry
 
 - Docker Registry is an open source container registry
-- Docker Registry is free to use
+- Docker Registry is free to use (defacto standard for storing and distributing Docker images)
+- Not as full featured as Docker Hub (no web UI, no user management, no organization management, etc)
+- This is a web api that stores and distributes Docker images (written in Go)
+- Storage drivers built in include: local, Amazon S3, Azure Blob Storage, Google Cloud Storage, OpenStack Swift, OpenS3, and more
 - Docker Registry is the default registry for Docker EE
 - Docker Registry is the default registry for Docker CE
 - Docker Registry is the default registry for Docker EE Basic
 - Docker Registry is the default registry for Docker EE Standard
 - Docker Registry is the default registry for Docker EE Advanced
 - github repository: github.com/docker/distribution (but your likely use docker registry image from Docker Hub)
+
+- Secure Docker Registry with TLS and Authentication
+    - https://docs.docker.com/registry/deploying/
+- Storage clean up with garbage collection
+    - https://docs.docker.com/registry/garbage-collection/
+- enable hub caching via "--registry-mirror" (can be used to cache images from Docker Hub)
+    - https://docs.docker.com/registry/recipes/mirror/
+
+##### Docker Registry - set up
+
+- `docker container run -d -p 5000:5000 --name registry registry` - run registry container
+- `docker container ls` - list containers
+- 'docker run hello-world` - run hello-world container
+- `docker image tag hello-world localhost:5000/hello-world` - tag hello-world image
+- `docker image ls` - list images
+- `docker image push localhost:5000/hello-world` - push hello-world image to registry
+- `docker container stop registry` - stop registry container
+- `docker container rm registry` - remove registry container
+- `docker container run -d -p 5000:5000 --name registry -v $(pwd)/registry-data:/var/lib/registry registry` - run registry container with volume
+- `docker image push localhost:5000/hello-world` - push hello-world image to registry
+- `ll registry-data/docker/registry/v2/repositories/` - list images in registry
+- `tree registry-data/docker/registry/v2/repositories/` - list images in registry
+
+##### Docker Registry - with Swarm
+
+- Swarm is a built-in Docker registry
+- Swarm is a built-in Docker registry that is not secure by default
+- Swarm is a built-in Docker registry that is not recommended for production
+- Recommended to use Docker Registry or Docker Trusted Registry for production (AWS ECR, Azure Container Registry, Google Container Registry, etc) https://github.com/veggiemonk/awesome-docker
+
+- `docker service create --name registry --publish published=5000,target=5000 registry` - create registry service
+- `docker service ls` - list services
+- `docker service ps registry` - list tasks in service
+- `docker image tag hello-world localhost:5000/hello-world` - tag hello-world image
+- `docker image push localhost:5000/hello-world` - push hello-world image to registry
+- `docker service rm registry` - remove registry service
+
+- Registry and proper TLS
+    - "Secure by default" is a core principle of Docker
+    - Except, local registries are not secure by default
 
 # Recommended VS Code extensions
 
