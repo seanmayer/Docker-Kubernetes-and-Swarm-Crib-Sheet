@@ -783,6 +783,37 @@ psql_pwd.txt` - (for secrets) (e.g. `echo "testPwd" | docker secret create psql_
     - "Secure by default" is a core principle of Docker
     - Except, local registries are not secure by default
 
+##### Docker and Swarm in Production
+
+Reduce Scope
+- Many initial production deployments are small
+- Solution you don't need on day one:
+    - Full CI/CD pipeline
+    - Dynamic scaling
+    - Containerising all or nothing
+    - Starting with persistent data (databases and volumes)
+
+Legacy Apps
+- Microservice conversion is not required
+- 12 factor apps is something to strive for but not required
+- Don't let idealism get in the way of containerisation
+
+What to focus on first: Dockerfiles
+- More important than Docker Compose or Swarm (fancy orchestration)
+- Its your new build environment documentation
+- Understand the Dockerfile/ENTRYPOINT 
+- FROM Offical distros (e.g. Debian, Ubuntu, CentOS, etc)
+
+
+Dockerfile Maturity Model
+- Make it start
+- Make it log all things (stdout/stderr)
+- Make it documented in file
+- Make it work for all environments (dev, test, prod)
+- Make it lean (small as possible) (e.g. use alpine) - but at the start don't worry about this
+- Make it secure (e.g. no root, no secrets, etc)
+- Make it scale (e.g. no state, no sessions, etc)
+
 # Recommended VS Code extensions
 
 - Docker (allows you to run docker commands from VS Code)
