@@ -814,6 +814,18 @@ Dockerfile Maturity Model
 - Make it secure (e.g. no root, no secrets, etc)
 - Make it scale (e.g. no state, no sessions, etc)
 
+Dockerfile Anti-Pattern: Trapping Data
+- Problem: Store unique data in container
+- Solution: Define VOLUME for each location
+```
+VOLUME /var/lib/postgresql/data
+ENTRYPOINT ["docker-entrypoint.sh"]
+CMD ["postgres"]
+```
+- (Sometimes people forget to define extra volumes for their data such as debug logs or dump logs, or cache files, etc) You want to make sure these are in volumes.
+
+- Don't use the latest tag in production
+
 # Recommended VS Code extensions
 
 - Docker (allows you to run docker commands from VS Code)
