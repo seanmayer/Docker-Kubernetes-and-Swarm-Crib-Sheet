@@ -792,6 +792,7 @@ Reduce Scope
     - Dynamic scaling
     - Containerising all or nothing
     - Starting with persistent data (databases and volumes)
+    - Starting with complex networking (overlay networks, etc)
 
 Legacy Apps
 - Microservice conversion is not required
@@ -803,7 +804,6 @@ What to focus on first: Dockerfiles
 - Its your new build environment documentation
 - Understand the Dockerfile/ENTRYPOINT 
 - FROM Offical distros (e.g. Debian, Ubuntu, CentOS, etc)
-
 
 Dockerfile Maturity Model
 - Make it start
@@ -825,6 +825,7 @@ CMD ["postgres"]
 - (Sometimes people forget to define extra volumes for their data such as debug logs or dump logs, or cache files, etc) You want to make sure these are in volumes.
 
 - Don't use the latest tag in production
+
 
 # Recommended VS Code extensions
 
