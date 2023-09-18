@@ -826,6 +826,10 @@ CMD ["postgres"]
 
 - Don't use the latest tag in production
 
+Dockerfile Anti-Pattern: Default configs
+
+- Not changing default configs (or copying VM configs)
+- Solution: Update default configs via ENV, RUN, ENTRYPOINT (ran before CMD), or CMD
 
 # Recommended VS Code extensions
 
