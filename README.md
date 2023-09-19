@@ -831,6 +831,11 @@ Dockerfile Anti-Pattern: Default configs
 - Not changing default configs (or copying VM configs)
 - Solution: Update default configs via ENV, RUN, ENTRYPOINT (ran before CMD), or CMD
 
+Dockerfile Anti-Pattern: Environment specific 
+
+- Problem: Copying files values on image build
+- Solution: Single dockerfile, with default values, ENV for overrides using ENTRYPOINT script 
+
 # Recommended VS Code extensions
 
 - Docker (allows you to run docker commands from VS Code)
