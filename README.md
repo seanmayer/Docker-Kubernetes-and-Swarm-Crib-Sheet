@@ -836,6 +836,38 @@ Dockerfile Anti-Pattern: Environment specific
 - Problem: Copying files values on image build
 - Solution: Single dockerfile, with default values, ENV for overrides using ENTRYPOINT script 
 
+Containers on VMs or Bare Metal?
+
+- Loads of pros and cons for both: (stick with what your comfortable with first)
+    - Containers on VMs
+        - Pros:
+            - Easy to get started
+            - Easy to scale
+            - Easy to migrate
+            - Easy to secure
+        - Cons:
+            - Extra layer of abstraction
+            - Extra resource overhead
+            - Extra cost
+            - Extra complexity
+            - Extra management
+
+    - Containers on Bare Metal
+        - Pros:
+            - No extra layer of abstraction
+            - No extra resource overhead
+            - No extra cost
+            - No extra complexity
+            - No extra management
+        - Cons:
+            - Hard to get started
+            - Hard to scale
+            - Hard to migrate
+            - Hard to secure
+
+- VMs vs Bare Metal on performance:
+    - whitepaper on this can be found here: https://www.bretfisher.com/dockercon17eu/
+
 # Recommended VS Code extensions
 
 - Docker (allows you to run docker commands from VS Code)
