@@ -868,6 +868,18 @@ Containers on VMs or Bare Metal?
 - VMs vs Bare Metal on performance:
     - whitepaper on this can be found here: https://www.bretfisher.com/dockercon17eu/
 
+Why OS Linux Distro Matters?
+
+- Docker is kernal and storage driver dependent
+- Miniman version of Linux is not always best
+- No opion? use Ubuntu LTS
+    - Well tested and suportted
+    - Wide storage driver support
+    - Or try InfraKit or LinuxKit
+- Get the correct Docker for your distro from Docker docs
+    - https://docs.docker.com/engine/installation/
+
+
 # Recommended VS Code extensions
 
 - Docker (allows you to run docker commands from VS Code)
