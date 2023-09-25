@@ -879,6 +879,14 @@ Why OS Linux Distro Matters?
 - Get the correct Docker for your distro from Docker docs
     - https://docs.docker.com/engine/installation/
 
+Container Distro Which one?
+
+- Don't choose based on size
+- At first match your existing deployment process
+- Perhaps later try a smaller distro like Alpine
+
+
+
 
 # Recommended VS Code extensions
 
