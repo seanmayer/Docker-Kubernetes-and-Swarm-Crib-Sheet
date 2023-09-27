@@ -783,7 +783,7 @@ psql_pwd.txt` - (for secrets) (e.g. `echo "testPwd" | docker secret create psql_
     - "Secure by default" is a core principle of Docker
     - Except, local registries are not secure by default
 
-##### Docker and Swarm in Production
+##### Docker in Production Tips
 
 Reduce Scope
 - Many initial production deployments are small
@@ -885,8 +885,14 @@ Container Distro Which one?
 - At first match your existing deployment process
 - Perhaps later try a smaller distro like Alpine
 
+Summary on Tips
 
-
+- Trim your optional requirements
+- Start with Dockerfiles or compose
+- Watch out for anti-patterns in Dockerfiles
+- Use a familiar distro
+- Find a way to out source your plumbing (e.g. Docker Trusted Registry, etc)
+- Realise parts of your tech stack may change (stay flexible)
 
 # Recommended VS Code extensions
 
