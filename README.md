@@ -894,6 +894,18 @@ Summary on Tips
 - Find a way to out source your plumbing (e.g. Docker Trusted Registry, etc)
 - Realise parts of your tech stack may change (stay flexible)
 
+# Kubernetes
+
+- Kubernetes is an open source container orchestration tool
+- Kubernetes = K8s
+- Container orchestration is the automated process of managing and deploying containers
+- Released by Google in 2015, now maintained by a large community of contributors
+- Runs on top of Docker (usually) as a set of APIs in containers
+- Provides API/CLI to manage clusters of containers
+- Many cloud providers offer managed Kubernetes clusters (e.g. AWS EKS, Azure AKS, Google GKE, etc)
+- Many vendors make distributions of Kubernetes (e.g. Docker EE, Red Hat OpenShift, Helm, etc)
+
+
 # Recommended VS Code extensions
 
 - Docker (allows you to run docker commands from VS Code)
