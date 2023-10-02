@@ -905,6 +905,15 @@ Summary on Tips
 - Many cloud providers offer managed Kubernetes clusters (e.g. AWS EKS, Azure AKS, Google GKE, etc)
 - Many vendors make distributions of Kubernetes (e.g. Docker EE, Red Hat OpenShift, Helm, etc)
 
+## Why Kubernetes?
+
+- Kubernetes is the most popular container orchestration tool
+- Orchestration is the automated process of managing and deploying containers
+- You might not need orchestration if you only have a few containers (you could just need Docker Compose / single node using features of AWS - Autoscaling groups, elastic load balancing, Azure, Google Cloud, etc)
+- Servers + Change Rate = Need for Orchestration
+- When your starting out you may only need a single server or a few servers or not changing apps much (orchestration can be overkill) using services like Elastic Beanstalk, Heroku, etc (alternatives of doing your own orchestration)
+- If you choose K8s which distribution should you use? (e.g. Docker EE, Red Hat OpenShift, Helm, etc)
+
 
 # Recommended VS Code extensions
 
