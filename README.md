@@ -914,6 +914,29 @@ Summary on Tips
 - When your starting out you may only need a single server or a few servers or not changing apps much (orchestration can be overkill) using services like Elastic Beanstalk, Heroku, etc (alternatives of doing your own orchestration)
 - If you choose K8s which distribution should you use? (e.g. Docker EE, Red Hat OpenShift, Helm, etc)
 
+## Kubernetes vs Swarm
+
+- Kuberenetes and Swarm are both container orchestration tools
+- Swarm is built into Docker
+- Kubernetes is not built into Docker
+- Swarm is easier to setup and get started with
+- Kubernetes has a larger ecosystem of tools and support
+
+### Advantages of Kubernetes:
+- Kubernetes has a larger ecosystem of tools and support
+- Kubernetes has a larger community of users
+- Kubernetes has a larger community of contributors
+- Kubernetes has a larger ecosystem of tools and support
+- Cloud Vendors will support Kubernetes - can manage it for you (e.g. AWS EKS, Azure AKS, Google GKE, etc)
+- Covers more use cases (e.g. stateful apps, batch jobs, etc)
+
+### Advantages of Swarm:
+- Swarm is built into Docker
+- Swarm is easier to setup and get started with
+- Swarm is easier to manage
+- Swarm has a smaller learning curve
+- Secure by default
+- Easier to troubleshoot
 
 # Recommended VS Code extensions
 
