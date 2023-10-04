@@ -938,6 +938,16 @@ Summary on Tips
 - Secure by default
 - Easier to troubleshoot
 
+### Kubernetes - Architecture Terminology
+- kubectl - Kubernetes CLI
+- Node - a server in the Kubernetes cluster
+- kubelet - Kubernetes agent that runs on each node in the cluster
+- Control Plane - the master that controls the cluster
+
+- kube-proxy - Kubernetes agent that runs on each node in the cluster
+- kube-scheduler - Kubernetes agent that runs on the master node in the cluster
+- kube-apiserver - Kubernetes agent that runs on the master node in the cluster
+
 # Recommended VS Code extensions
 
 - Docker (allows you to run docker commands from VS Code)
