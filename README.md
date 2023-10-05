@@ -943,6 +943,18 @@ Summary on Tips
 - Node - a server in the Kubernetes cluster
 - kubelet - Kubernetes agent that runs on each node in the cluster
 - Control Plane - the master that controls the cluster
+    - kube-apiserver - Kubernetes agent that runs on the master node in the cluster
+    - kube-scheduler - Kubernetes agent that runs on the master node in the cluster
+    - kube-controller-manager - Kubernetes agent that runs on the master node in the cluster
+    - etcd - key-value store that stores the cluster state
+
+![k8-arch](images/k8-arch.png)
+
+- In a multi master set up, you have multiple control planes (e.g. 3 control planes)
+    - odd number of control planes is recommended (e.g. 3, 5, 7, etc) RAFT protocol is used to elect a leader
+    - if you have an even number of control planes, you can have a split brain problem (e.g. 2 control planes, one control plane goes down, the other control plane is not sure if the other control plane is down or not, so it will not take over the other control plane)
+    
+
 
 - kube-proxy - Kubernetes agent that runs on each node in the cluster
 - kube-scheduler - Kubernetes agent that runs on the master node in the cluster
