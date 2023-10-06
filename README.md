@@ -954,11 +954,26 @@ Summary on Tips
     - odd number of control planes is recommended (e.g. 3, 5, 7, etc) RAFT protocol is used to elect a leader
     - if you have an even number of control planes, you can have a split brain problem (e.g. 2 control planes, one control plane goes down, the other control plane is not sure if the other control plane is down or not, so it will not take over the other control plane)
     
-
-
 - kube-proxy - Kubernetes agent that runs on each node in the cluster
 - kube-scheduler - Kubernetes agent that runs on the master node in the cluster
 - kube-apiserver - Kubernetes agent that runs on the master node in the cluster
+
+### Kubernetes - Container Orchestration
+
+- Pod: one or more containers that are deployed together on one node
+  - basic unit of deployment in Kubernetes - containers are always in a pod
+- Controller: For creating/updating pods and other objects
+  - ReplicaSet: ensures that a specified number of pod replicas are running at any given time
+  - Deployment: manages ReplicaSets and provides declarative updates for Pods and ReplicaSets
+  - DaemonSet: ensures that all (or some) Nodes run a copy of a Pod
+  - StatefulSet: manages the deployment and scaling of a set of Pods, and provides guarantees about the ordering and uniqueness of these Pods
+  - Job: creates one or more Pods and ensures that a specified number of them successfully terminate
+  - CronJob: creates Jobs on a repeating schedule
+- Service: For networking and load balancing of pods
+  - Service: an abstract way to expose an application running on a set of Pods as a network service
+  - Ingress: exposes HTTP and HTTPS routes from outside the cluster to services within the cluster
+- Namespace: For scoping and isolating objects (filtering objects in Kubernetes)) 
+  - Namespace: virtual clusters backed by the same physical cluster
 
 # Recommended VS Code extensions
 
