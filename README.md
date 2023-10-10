@@ -974,6 +974,10 @@ Summary on Tips
   - Ingress: exposes HTTP and HTTPS routes from outside the cluster to services within the cluster
 - Namespace: For scoping and isolating objects (filtering objects in Kubernetes)) 
   - Namespace: virtual clusters backed by the same physical cluster
+- Secrets: For storing sensitive data
+  - Secret: an object that contains a small amount of sensitive data such as a password, a token, or a key
+- ConfigMaps: For storing configuration data
+    - ConfigMap: an API object used to store non-confidential data in key-value pairs
 
 # Recommended VS Code extensions
 
