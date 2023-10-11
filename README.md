@@ -979,6 +979,12 @@ Summary on Tips
 - ConfigMaps: For storing configuration data
     - ConfigMap: an API object used to store non-confidential data in key-value pairs
 
+### Kubernetes - Run, Create, Apply
+
+- `kubectl run --help` - show help for run command (create and run a particular image, possibly replicated)
+- `kubectl create --help` - show help for create command (create resources from files)
+- `kubectl apply --help` - show help for apply command (create and update resources from files)
+
 # Recommended VS Code extensions
 
 - Docker (allows you to run docker commands from VS Code)
