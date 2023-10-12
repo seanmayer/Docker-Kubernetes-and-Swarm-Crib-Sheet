@@ -985,6 +985,42 @@ Summary on Tips
 - `kubectl create --help` - show help for create command (create resources from files)
 - `kubectl apply --help` - show help for apply command (create and update resources from files)
 
+### Kubernetes - Kubectl Run Pod
+
+Starter commands:
+
+- `kubectl version` - check kubectl version (client and server)
+- `kubectl version --short` (client and server)
+
+Two ways to create a pod:
+    - Imperative commands (e.g. `kubectl run my-nginx --image nginx`)
+    - Declarative files (e.g. `kubectl apply -f nginx.yaml`)
+
+Get the pods:
+    - `kubectl get pods`
+
+Get all resources:
+    - `kubectl get all` (e.g. pods, services, deployments, etc)
+
+Why do we need a pod?
+
+- Unlike Docker, Kubernetes does not have a built-in container runtime
+- Kubernetes uses a container runtime to run containers in pods
+- Kubernetes supports multiple container runtimes (e.g. Docker, containerd, CRI-O, etc)
+- You creat Pods (via CLI, YAML or API)
+- kublet (agent on each node) creates containers (via container runtime)
+
+Official K8 docs:
+
+https://kubernetes.io/docs/reference/kubectl/cheatsheet/
+https://kubernetes.io/docs/reference/kubectl/docker-cli-to-kubectl/
+
+More K8 docs:
+https://cheatography.com/deleted-44122/cheat-sheets/kubectl/
+https://cheatography.com/gauravpandey44/cheat-sheets/kubernetes-k8s/
+
+And use the `--help` flag on any command
+
 # Recommended VS Code extensions
 
 - Docker (allows you to run docker commands from VS Code)
