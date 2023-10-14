@@ -1021,6 +1021,30 @@ https://cheatography.com/gauravpandey44/cheat-sheets/kubernetes-k8s/
 
 And use the `--help` flag on any command
 
+### Kubernetes - Kubectl Create Deployment
+
+- `kubectl create deployment --help` - show help for create deployment command (create a deployment with the specified name)
+- `kubectl create deployment my-nginx --image nginx` - create deployment
+- `kubectl get deployments` - get deployments
+- `kubectl get all` - get all resources
+- `kubectl get pods` - get pods
+
+Instead of creating a pod, we created a deployment. A deployment is a higher level abstraction that manages pods for us. A deployment manages a ReplicaSet which manages pods.
+
+Why do we need a deployment?
+
+- A deployment is a higher level abstraction that manages pods for us
+- A deployment manages a ReplicaSet which manages pods
+- A deployment allows us to easily scale pods up or down
+- A deployment allows us to easily update pods when a new image is pushed
+- A deployment allows us to easily roll back changes to a previous version
+
+### Clean up commands:
+
+- `kubectl delete deployment <deployment name>` - delete deployment
+- `kubectl delete pod <pod name>` - delete pod
+- `kubectl delete all --all` - delete all resources
+
 # Recommended VS Code extensions
 
 - Docker (allows you to run docker commands from VS Code)
