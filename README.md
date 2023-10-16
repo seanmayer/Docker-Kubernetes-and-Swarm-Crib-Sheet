@@ -1045,6 +1045,18 @@ Why do we need a deployment?
 - `kubectl delete pod <pod name>` - delete pod
 - `kubectl delete all --all` - delete all resources
 
+### Kubernetes - Scaling ReplicaSets
+
+- `kubectl scale --help` - show help for scale command (set a new size for a Deployment, ReplicaSet, Replication Controller, or StatefulSet)
+- `kubectl scale deployment <deployment name> --replicas <number of replicas>` - scale deployment
+
+What happened when we scaled the deployment?
+
+- A new ReplicaSet was created
+- The new ReplicaSet created a new pod
+- The old ReplicaSet was scaled down
+- The old ReplicaSet deleted the old pod
+
 # Recommended VS Code extensions
 
 - Docker (allows you to run docker commands from VS Code)
