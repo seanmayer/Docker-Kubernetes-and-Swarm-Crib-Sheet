@@ -1057,6 +1057,20 @@ What happened when we scaled the deployment?
 - The old ReplicaSet was scaled down
 - The old ReplicaSet deleted the old pod
 
+### Kubernetes - Inspecting Resources
+
+#### Inspecting resources with get
+
+- `kubectl get --help` - show help for get command (display one or many resources)
+- `kubectl get all` - get all resources
+- `kubectl get pods` - get pods
+- `kubectl get pods -o wide` - get pods (wide output)
+- `kubectl get pods -o yaml` - get pods (yaml output)
+- `kubectl get pods -o json` - get pods (json output)
+- `kubectl get pods -o jsonpath` - get pods (jsonpath output)
+
+- `-o yaml` - output yaml flag is useful for creating yaml files and then editing them and then applying them for a dev workflow
+
 # Recommended VS Code extensions
 
 - Docker (allows you to run docker commands from VS Code)
