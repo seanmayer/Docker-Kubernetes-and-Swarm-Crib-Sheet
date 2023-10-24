@@ -1071,6 +1071,43 @@ What happened when we scaled the deployment?
 
 - `-o yaml` - output yaml flag is useful for creating yaml files and then editing them and then applying them for a dev workflow
 
+#### Inspecting resources with describe
+
+This will give:
+- Events
+- Labels
+- Annotations
+- Status
+- etc 
+
+- `kubectl describe --help` - show help for describe command (show details of a specific resource or group of resources)
+- `kubectl describe pod <pod name>` - describe pod
+- `kubectl describe deployment <deployment name>` - describe deployment
+- `kubectl describe service <service name>` - describe service
+- `kubectl describe node <node name>` - describe node
+
+#### Inspecting resources with watch
+
+- `kubectl get pods -w` - get pods (watch)
+- `kubectl get pods -w -o wide` - get pods (watch) (wide output)
+- `kubectl get events -watch-only` - get events (watch only) -watch-only flag is useful for debugging (e.g. if you have a pod that is not starting up, you can run this command to see what is happening)
+
+### Kubernetes - Inspecting logs
+
+- `kubectl logs --help` - show help for logs command (print the logs for a container in a pod)
+- `kubectl logs <pod name>` - show logs of pod
+- `kubectl logs <pod name> -f` - show logs of pod (follow)
+- `kubectl logs <pod name> --tail <number of lines>` - show logs of pod (tail)
+- `kubectl logs <pod name> --since <time>` - show logs of pod (since)
+- `kubectl logs <pod name> --timestamps` - show logs of pod (timestamps)
+- `kubectl logs <pod name> --previous` - show logs of pod (previous) (e.g. if a pod has crashed, you can use this command to see the logs of the previous pod)
+- `kubectl logs <pod name> --all-containers` - show logs of pod (all containers) (e.g. if you have multiple containers in a pod, you can use this command to see the logs of all the containers in the pod)
+- `kubectl logs -l <label name>=<label value>` - show logs of pod (label selector) (e.g. if you have multiple pods with the same label, you can use this command to see the logs of all the pods with that label)
+- stern (https://github.com/stern/stern) - multi pod/container log tailing (e.g. `stern <pod name>`)
+
+
+
+
 # Recommended VS Code extensions
 
 - Docker (allows you to run docker commands from VS Code)
