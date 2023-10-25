@@ -1105,8 +1105,7 @@ This will give:
 - `kubectl logs -l <label name>=<label value>` - show logs of pod (label selector) (e.g. if you have multiple pods with the same label, you can use this command to see the logs of all the pods with that label)
 - stern (https://github.com/stern/stern) - multi pod/container log tailing (e.g. `stern <pod name>`)
 
-
-
+### Exposing Kubernetes Ports
 
 # Recommended VS Code extensions
 
