@@ -1139,6 +1139,20 @@ This will give:
     - Requires CoreDNS v1.7 or higher
     - Not used for pods, but for giving pods a DNS name to use for something outside the cluster
 
+#### Creating a ClusterIP Service
+
+- Open a separate terminal window and run `kubectl get pods -w` (watch pods)
+- `kubectl expose deployment <deployment name> --port <port number>` - expose deployment
+- `kubectl scale deployment <deployment name> --replicas <number of replicas>` - scale deployment
+- `kubectl expose deployment <deployment name> --port <port number>` - expose deployment
+
+Example output of port:
+    
+    ```
+    NAME         TYPE        CLUSTER-IP      EXTERNAL-IP   PORT(S)        AGE
+    kubernetes   ClusterIP   xxxxxxxxx       <none>        443/TCP        1d
+    nginx        ClusterIP   xxxxxxxxx       <none>        80/TCP         1d
+    ```
 
 
 # Recommended VS Code extensions
