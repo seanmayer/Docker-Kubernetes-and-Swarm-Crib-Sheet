@@ -1107,6 +1107,40 @@ This will give:
 
 ### Exposing Kubernetes Ports
 
+- `kubectl port-forward --help` - show help for port-forward command (forward one or more local ports to a pod)
+
+#### Exposing Containers
+
+- `kubectl expose --help` - show help for expose command (take a replication controller, service, deployment or pod and expose it as a new Kubernetes Service)
+   - A service is a stable, IP address and port for accessing a set of pods
+   - If we want to connect to pod(s), we need to expose them as a service
+   - CoreDNS is a DNS server that resolves DNS names to IP addresses (e.g. if you have a service called my-service, you can use my-service as the hostname to connect to the service)
+   - Types of services
+        - ClusterIP (default) - Exposes the Service on an internal IP in the cluster. This type makes the Service only reachable from within the cluster.
+        - NodePort - Exposes the Service on the same port of each selected Node in the cluster using NAT. Makes a Service accessible from outside the cluster using <NodeIP>:<NodePort>. Superset of ClusterIP.
+        - LoadBalancer - Creates an external load balancer in the current cloud (if supported) and assigns a fixed, external IP to the Service. Superset of NodePort.
+        - ExternalName - Exposes the Service using an arbitrary name (specified by externalName in the spec) by returning a CNAME record with the name. No proxy is used. This type requires v1.7 or higher of kube-dns.
+
+#### Basic Service Types
+- ClusterIP (default) 
+    - single virtual IP address, only reachable from within the cluster
+    - pods can reach service on apps port number
+- NodePort
+    - High port allocated on each node (e.g. 30000-32767)
+    - Port is open on every node's IP
+    - Anyone can connect (if they can reach the node)
+    - other pods need to be updated to use NodePort
+- LoadBalancer
+    - Controls a Load Balancer endpoint external to the cluster
+    - Only available when infrastructure provider gives you a load balancer (e.g. AWS ELB, Google Cloud Load Balancer, Azure Load Balancer)
+    - Creates NodePort and ClusterIP services, tells LB to send to NodePort
+- ExternalName
+    - Adds CNAME DNS record to CoreDNS only (does not do proxying)
+    - Requires CoreDNS v1.7 or higher
+    - Not used for pods, but for giving pods a DNS name to use for something outside the cluster
+
+
+
 # Recommended VS Code extensions
 
 - Docker (allows you to run docker commands from VS Code)
