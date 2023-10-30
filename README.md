@@ -1154,6 +1154,9 @@ Example output of port:
     nginx        ClusterIP   xxxxxxxxx       <none>        80/TCP         1d
     ```
 
+#### Creating a NodePort and LoadBalancer Service
+
+- `kubectl expose deployment <deployment name> --port <port number> --type NodePort` - expose deployment
 
 # Recommended VS Code extensions
 
