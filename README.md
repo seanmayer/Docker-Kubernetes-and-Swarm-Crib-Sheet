@@ -1156,7 +1156,35 @@ Example output of port:
 
 #### Creating a NodePort and LoadBalancer Service
 
-- `kubectl expose deployment <deployment name> --port <port number> --type NodePort` - expose deployment
+##### Create a NodePort Service
+- Lets expose a NodePort so this can be accessed from outside the cluster (e.g. localhost, windows, mac, etc)
+    - `kubectl expose deployment <deployment name> --port <port number> --type NodePort` - expose deployment
+- A node port service also creates a ClusterIP
+- These three types of services are additive, each one creates the previous one
+   - ClusterIP
+    - NodePort
+    - LoadBalancer
+
+Example output of port:
+
+    ```
+    NAME         TYPE        CLUSTER-IP      EXTERNAL-IP   PORT(S)        AGE
+    kubernetes   ClusterIP   xxxxxxxxx       <none>        443/TCP        1d
+    nginx        NodePort    xxxxxxxxx       <none>        80:xxxxx/TCP   1d
+    ```
+For example you can test this with `curl localhost:xxxxx` (xxxxx is the port number)
+
+##### Create a LoadBalancer Service
+- Cloud providers (e.g. AWS, Azure, Google Cloud, etc) have built-in load balancers
+- If on docker desktop, it provides a load balancer for you that publishes the port on your machine
+- `kubectl expose deployment <deployment name> --port <port number> --type LoadBalancer` - expose deployment
+- To test this, you can use `curl localhost:xxxxx` (xxxxx is the port number)
+- If you are using kubeadmn, minikube, or microk8s
+    - No built-in load balancer
+    - You can still run the command, but it will stay in pending state (but its NodePort will still works)
+
+##### Clean up commands:
+- `kubectl delete service <service name>` - delete service
 
 # Recommended VS Code extensions
 
