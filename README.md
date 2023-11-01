@@ -1183,6 +1183,51 @@ For example you can test this with `curl localhost:xxxxx` (xxxxx is the port num
     - No built-in load balancer
     - You can still run the command, but it will stay in pending state (but its NodePort will still works)
 
+#### Kubernetes - Service DNS
+
+- Starting with 1.11, CoreDNS is the default DNS server for Kubernetes
+- CoreDNS is a DNS server that resolves DNS names to IP addresses
+- CoreDNS is a flexible, extensible DNS server that can serve as the Kubernetes cluster DNS
+- Like Swarm, Kubernetes has a built-in DNS server
+
+- So far we have been using `curl <hostname>` to connect to services
+    - But that only works for pods in the same namespace
+    - `kubectl get namespaces` - get namespaces
+    - We can use `curl <service name>.<namespace name>.svc.cluster.local` to connect to services in other namespaces
+
+When you run `kubectl get namespaces` you will see the following namespaces:
+
+    ```
+    NAME              STATUS   AGE
+    default           Active   1d
+    kube-node-lease   Active   1d
+    kube-public       Active   1d
+    kube-system       Active   1d
+    ```
+
+- default - default namespace (useally where you put your apps)
+- kube-node-lease - used by nodes to update their lease
+- kube-public - used for public information
+- kube-system - used by Kubernetes for its own purposes
+- docker - used by Docker for its own purposes
+
+You may want to create your own namespaces for your apps (e.g. `kubectl create namespace <namespace name>`)
+
+DNS is inside the cluster, so you can't use it outside the cluster (e.g. localhost, windows, mac, etc)
+
+##### Namespaces vs Stacks
+
+- Namespaces are a way to divide cluster resources between multiple users (via resource quota)
+- Namespaces are a way to divide cluster resources between multiple teams (via resource quota)
+- Namespaces are a way to divide cluster resources between multiple projects (via resource quota)
+- Namespaces are a way to divide cluster resources between multiple environments (via resource quota)
+
+- Stacks are a way to divide cluster resources between multiple apps (via labels)
+- Stacks are a way to divide cluster resources between multiple services (via labels)
+- Stacks are a way to divide cluster resources between multiple deployments (via labels)
+- Stacks are a way to divide cluster resources between multiple replicasets (via labels)
+- Stacks are a way to divide cluster resources between multiple pods (via labels)
+
 ##### Clean up commands:
 - `kubectl delete service <service name>` - delete service
 
