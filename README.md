@@ -1231,6 +1231,36 @@ DNS is inside the cluster, so you can't use it outside the cluster (e.g. localho
 ##### Clean up commands:
 - `kubectl delete service <service name>` - delete service
 
+### Kubernetes - YAML Generator in Kubectl Commands
+
+- These commands use helper templates ("generators") to generate YAML files
+- Every resource in Kubernetes has a specification ("spec")
+- `kubectl create deployment <deployment name> --image <image name> --dry-run -o yaml` - create deployment (dry run) (yaml output)
+- You can output those templates with `--dry-run -o yaml`
+- You can use the YAML defaults as a starting point for your own YAML files
+- Generators are available for (these are opionated defaults, you can change them):
+    - pods
+    - services
+    - deployments
+    - replicasets
+    - etc
+
+#### Kubernetes - Generator Examples
+
+- Using `dry-run` with yaml output we can see the generated YAML
+    - `kubectl create deployment <deployment name> --image <image name> --dry-run -o yaml` - create deployment (dry run) (yaml output) (e.g. deployments for pods and replica sets)
+    - `kubectl create job <job name> --image <image name> --dry-run -o yaml` - create job (dry run) (yaml output) (e.g. batch jobs for one time tasks like db migrations, etc)
+    - `kubectl create cronjob <cronjob name> --image <image name> --dry-run -o yaml` - create cronjob (dry run) (yaml output) (e.g. cron jobs for scheduled tasks like backups, etc)
+    - `kubectl create service <service name> --image <image name> --dry-run -o yaml` - create service (dry run) (yaml output) (e.g. services for networking and load balancing)
+    - `kubectl create configmap <configmap name> --image <image name> --dry-run -o yaml` - create configmap (dry run) (yaml output) (e.g. configmaps for storing configuration data)
+    - `kubectl create secret <secret name> --image <image name> --dry-run -o yaml` - create secret (dry run) (yaml output) (e.g. secrets for storing sensitive data)
+    - `kubectl create namespace <namespace name> --image <image name> --dry-run -o yaml` - create namespace (dry run) (yaml output) (e.g. namespaces for scoping and isolating objects)
+    - `kubectl create expose <expose name> --image <image name> --dry-run -o yaml` - create expose (dry run) (yaml output) (e.g. expose for exposing a deployment as a service)
+        - You need the deployment to exist first before you can expose it
+    
+##### Clean up commands:
+- `kubectl delete deployment <deployment name>` - delete deployment
+
 # Recommended VS Code extensions
 
 - Docker (allows you to run docker commands from VS Code)
