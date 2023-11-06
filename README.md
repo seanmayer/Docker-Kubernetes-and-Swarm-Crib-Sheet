@@ -1234,9 +1234,9 @@ DNS is inside the cluster, so you can't use it outside the cluster (e.g. localho
 ### Kubernetes - YAML Generator in Kubectl Commands
 
 - These commands use helper templates ("generators") to generate YAML files
-- Every resource in Kubernetes has a specification ("spec")
+- Every resource in Kubernetes has a specification ("spec") 
 - `kubectl create deployment <deployment name> --image <image name> --dry-run -o yaml` - create deployment (dry run) (yaml output)
-- You can output those templates with `--dry-run -o yaml`
+- You can output those templates with `--dry-run -o yaml` and then edit them
 - You can use the YAML defaults as a starting point for your own YAML files
 - Generators are available for (these are opionated defaults, you can change them):
     - pods
