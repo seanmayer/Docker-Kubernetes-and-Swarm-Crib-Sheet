@@ -1245,6 +1245,22 @@ DNS is inside the cluster, so you can't use it outside the cluster (e.g. localho
     - replicasets
     - etc
 
+### Imperative vs Declarative
+
+- Imperative commands are like a recipe with exact steps to follow
+- Declarative files are like a grocery list with desired state
+
+Examples of imperative commands:
+
+- `kubectl run --image <image name> <pod name>` - run pod
+- `kubectl expose deployment <deployment name> --port <port number>` - expose deployment
+- `kubectl scale deployment <deployment name> --replicas <number of replicas>` - scale deployment
+
+Examples of declarative files:
+
+- `kubectl apply -f <file name>` - apply file
+- `kubectl apply -f <directory name>` - apply directory
+
 #### Kubernetes - Generator Examples
 
 - Using `dry-run` with yaml output we can see the generated YAML
