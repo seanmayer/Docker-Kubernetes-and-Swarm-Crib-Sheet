@@ -1273,7 +1273,30 @@ Examples of declarative files:
     - `kubectl create namespace <namespace name> --image <image name> --dry-run -o yaml` - create namespace (dry run) (yaml output) (e.g. namespaces for scoping and isolating objects)
     - `kubectl create expose <expose name> --image <image name> --dry-run -o yaml` - create expose (dry run) (yaml output) (e.g. expose for exposing a deployment as a service)
         - You need the deployment to exist first before you can expose it
-    
+
+#### Kubernetes - The 3 Management Methods
+
+- Imperative commands (e.g. `kubectl run my-nginx --image nginx`) 
+    - Imperative commands are like a recipe with exact steps to follow
+    - Imperative commands are good for learning and trying things out
+    - Imperative commands are good for creating one-off resources
+- Imperative object configuration (e.g. `kubectl create deployment --image nginx nginx`)
+    - Good for prod or small environments, single file per command
+    - Can store changes in version control (e.g. git) yaml files
+    - Hard to automate and scale
+- Declarative object configuration (e.g. `kubectl apply -f nginx.yaml`)
+    - Best for prod or large environments, single file per object
+    - Can store changes in version control (e.g. git) yaml files
+    - Easy to automate and scale
+
+##### Important rules...
+- Don't mix imperative and declarative commands (the 3 management methods)
+- Learn CLI imperative commands first (easy control of local setup dev)
+    - Move to `apply -f` and `apply -f directory\` for prod or shared environments  
+    - Store yaml files in version control (e.g. git)
+    - Use `kubectl diff` to see changes before applying them  
+- This trains you for GitOps (e.g. Flux, ArgoCD, etc) (where git commits are automatically applied to Kubernetes clusters)
+
 ##### Clean up commands:
 - `kubectl delete deployment <deployment name>` - delete deployment
 
