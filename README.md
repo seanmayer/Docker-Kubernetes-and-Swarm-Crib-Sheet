@@ -1297,6 +1297,17 @@ Examples of declarative files:
     - Use `kubectl diff` to see changes before applying them  
 - This trains you for GitOps (e.g. Flux, ArgoCD, etc) (where git commits are automatically applied to Kubernetes clusters)
 
+#### Kubernetes - Declarative Object Configuration
+
+Why do we need declarative object configuration?
+
+- Good for prod or large environments, single file per object
+- Can store changes in version control (e.g. git) yaml files
+- Easy to automate and scales
+
+- `kubectl apply --help` - show help for apply command (apply a configuration to a resource by filename or stdin)
+- `kubectl apply -f <file name>` - apply files
+
 ##### Clean up commands:
 - `kubectl delete deployment <deployment name>` - delete deployment
 
