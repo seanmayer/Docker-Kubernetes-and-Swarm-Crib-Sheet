@@ -1307,6 +1307,42 @@ Why do we need declarative object configuration?
 
 - `kubectl apply --help` - show help for apply command (apply a configuration to a resource by filename or stdin)
 - `kubectl apply -f <file name>` - apply files
+- `kubectl apply -f https://k8s.io/examples/application/deployment.yaml` - apply files (from url)
+
+#### Kubernetes - Configuration YAML
+
+- Kubernetes configuration file are written in YAML or JSON
+- Each file contains one or more manifests
+- Each manifest describes API object (e.g. pod, service, deployment, etc)
+- Each manifest has 4 parts:
+    - apiVersion - which version of the Kubernetes API you're using to create this object
+    - kind - what kind of object you want to create
+    - metadata - data that helps uniquely identify the object, including a name string, UID, and optional namespace
+    - spec - the desired state of the object that you want to create
+
+```
+apiVersion: v1 (which version of the Kubernetes API you're using to create this object)
+kind: Pod (what kind of object you want to create)
+metadata: (data that helps uniquely identify the object, including a name string, UID, and optional namespace)
+  name: my-nginx-pod
+  labels:
+    app: nginx
+spec: (the desired state of the object that you want to create)
+    containers:
+    - name: nginx
+        image: nginx
+--- (seperator)
+apiVersion: v1
+kind: Service
+metadata:
+    name: my-nginx-service
+spec:
+    type: NodePort
+    ports:
+    - port: 80
+        targetPort: 80
+        nodePort: 30080        
+```
 
 ##### Clean up commands:
 - `kubectl delete deployment <deployment name>` - delete deployment
