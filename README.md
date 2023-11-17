@@ -1344,6 +1344,19 @@ spec:
         nodePort: 30080        
 ```
 
+#### Kubernetes - Building YAML Files
+
+- `kubectl create --help` - show help for create command (create resources from files)
+
+- `kind:` We can get a list of resources the cluster supports with `kubectl api-resources`
+    - You will see a list of resources and their shortnames (you may not need to use all these things in your YAML files)
+    - On the right hand side of the output you have KIND column (e.g. pods, services, deployments, etc)
+    - You may notice some resources have multiple API's (e.g. apps/v1, apps/v1beta1, apps/v1beta2, etc)   
+    -  `apiVersion:` We can get a list of API versions with `kubectl api-versions`
+- `kind` + `apiVersion` are the first two lines of your YAML file you need to figure out
+-`metadata:` Only name is required - We can get a list of metadata with `kubectl explain pods` (e.g. name, labels, annotations, etc)
+- `spec:` Where the action is - We can get a list of spec with `kubectl explain pods` (e.g. containers, volumes, etc)
+
 ##### Clean up commands:
 - `kubectl delete deployment <deployment name>` - delete deployment
 
