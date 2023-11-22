@@ -1357,6 +1357,16 @@ spec:
 -`metadata:` Only name is required - We can get a list of metadata with `kubectl explain pods` (e.g. name, labels, annotations, etc)
 - `spec:` Where the action is - We can get a list of spec with `kubectl explain pods` (e.g. containers, volumes, etc)
 
+#### Kubernetes - Buidling YAML Spec
+
+- We can get all the key each spec with `kubectl explain services --recursive`
+- We can get all the key each spec with `kubectl explain services.spec --recursive`
+- We can get all the key each spec with `kubectl explain services.spec.ports --recursive`
+- A spec can have sub spec of other resources (e.g. ports, containers, etc)
+   - `kubectl explain deployments.spec.template.spec.volumes.nfs.server` - get spec
+
+
+
 ##### Clean up commands:
 - `kubectl delete deployment <deployment name>` - delete deployment
 
