@@ -1364,8 +1364,9 @@ spec:
 - We can get all the key each spec with `kubectl explain services.spec.ports --recursive`
 - A spec can have sub spec of other resources (e.g. ports, containers, etc)
    - `kubectl explain deployments.spec.template.spec.volumes.nfs.server` - get spec
-
-
+- We can also use the docs to find out what each spec does
+    - kube docs: https://kubernetes.io/docs/#api-reference
+    - The docs are not always up to date, so you may need to use `kubectl explain` to find out what each spec does
 
 ##### Clean up commands:
 - `kubectl delete deployment <deployment name>` - delete deployment
