@@ -1368,6 +1368,8 @@ spec:
     - kube docs: https://kubernetes.io/docs/#api-reference
     - The docs are not always up to date, so you may need to use `kubectl explain` to find out what each spec does
 
+#### Kubernetes - Dry Runs and Diffing
+
 ##### Clean up commands:
 - `kubectl delete deployment <deployment name>` - delete deployment
 
