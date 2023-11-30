@@ -1370,6 +1370,11 @@ spec:
 
 #### Kubernetes - Dry Runs and Diffing
 
+- `kubectl apply --help` - show help for apply command (apply a configuration to a resource by filename or stdin)
+- `kubectl apply -f <file name> --dry-run` - apply files (dry run)
+- `kubectl apply -f <file name> --dry-run -o yaml` - apply files (dry run) (yaml output)
+- `kubectl apply -f <file name> --dry-run -o yaml | kubectl diff -f -` - apply files (dry run) (yaml output) (diff output)
+
 ##### Clean up commands:
 - `kubectl delete deployment <deployment name>` - delete deployment
 
