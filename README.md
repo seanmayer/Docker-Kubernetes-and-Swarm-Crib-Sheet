@@ -1375,8 +1375,52 @@ spec:
 - `kubectl apply -f <file name> --dry-run -o yaml` - apply files (dry run) (yaml output)
 - `kubectl apply -f <file name> --dry-run -o yaml | kubectl diff -f -` - apply files (dry run) (yaml output) (diff output)
 
+#### Kubernetes - Labels and Annotations
+
+- Labels go under `metadata:` (e.g. `labels:`)
+- Labels are key/value pairs that are attached to objects
+- Used for identifying, selecting, and grouping objects
+- Common examples of labels are:
+    - app
+    - release
+    - env
+    - tier
+    - track
+    - etc
+- Not set standards on how to use labels (e.g. you can use them however you want)
+- filter by labels with `kubectl get pods -l <label name>=<label value>`
+- filter by labels with `kubectl get pods -l <label name>=<label value>,<label name>=<label value>`
+- filter by labels with apply with `kubectl apply -f <file name> --selector <label name>=<label value>`
+
+#### Kubernetes - Label Selectors
+
+- This is the glue that connects objects together (e.g. pods, services, deployments, etc)
+- Many services use label selectors to "link" resouce dependencies
+- You will see these match up in the Service and Deployment YAML files
+- Example:
+```
+apiVersion: v1
+kind: Service
+metadata:
+    labels:
+        app: nginx
+spec:
+    type: NodePort
+    selector:
+        app: nginx
+    ports:
+    - port: 80
+        targetPort: 80
+        nodePort: 30080
+```
+- `selector:` is used to select the pods that the service will apply to
+- `app: nginx` is the label that the service will apply to
+
+- Taints and tolerations are used to control node placement
+
+
 ##### Clean up commands:
-- `kubectl delete deployment <deployment name>` - delete deployment
+- `kubectl delete <resource type> <resource name>` - delete resource
 
 # Recommended VS Code extensions
 
