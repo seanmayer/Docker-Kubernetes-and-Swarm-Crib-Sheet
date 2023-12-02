@@ -1418,6 +1418,9 @@ spec:
 
 - Taints and tolerations are used to control node placement
 
+### Kubernetes - Storage in Kubernetes
+
+- Kubernetes has a built-in storage system called Volumes
 
 ##### Clean up commands:
 - `kubectl delete <resource type> <resource name>` - delete resource
