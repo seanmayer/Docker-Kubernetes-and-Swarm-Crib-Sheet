@@ -1421,6 +1421,20 @@ spec:
 ### Kubernetes - Storage in Kubernetes
 
 - Kubernetes has a built-in storage system called Volumes
+- Volumes are used to store data (e.g. databases, etc)
+- StatefulSets are a resource type that manages pods with volumes
+    - StatefulSets are used for stateful apps (e.g. databases, etc)
+- Recommend to avoid volumes and stateful apps when starting out (add more work and complexity)
+    - Use a outsourced database (e.g. AWS RDS, Azure SQL, Google Cloud SQL, etc)
+
+- Creating and Connecting Volumes (2 types)
+    - Volume 
+        - Tied to the lifecycle of a pod
+        - all containers in a single pod can share them
+    - Persistent Volume 
+        - Independent of the lifecycle of a pod, (can be used by one or many pods) 
+        - Created at cluster level (not namespace level)
+        - Seperate storage config from Pod using it
 
 ##### Clean up commands:
 - `kubectl delete <resource type> <resource name>` - delete resource
