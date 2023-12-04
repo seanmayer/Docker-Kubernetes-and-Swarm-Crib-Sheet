@@ -1435,6 +1435,8 @@ spec:
         - Independent of the lifecycle of a pod, (can be used by one or many pods) 
         - Created at cluster level (not namespace level)
         - Seperate storage config from Pod using it
+    - CSI plugins (Container Storage Interface) 
+        - allows third party storage providers to write plugins to provision storage in Kubernetes
 
 ##### Clean up commands:
 - `kubectl delete <resource type> <resource name>` - delete resource
