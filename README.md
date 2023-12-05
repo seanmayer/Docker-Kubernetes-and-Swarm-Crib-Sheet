@@ -1438,6 +1438,11 @@ spec:
     - CSI plugins (Container Storage Interface) 
         - allows third party storage providers to write plugins to provision storage in Kubernetes
 
+### Kubernetes - Ingess
+
+- None of the service types work at OSI layer 7 (e.g. http, https, etc)
+
+
 ##### Clean up commands:
 - `kubectl delete <resource type> <resource name>` - delete resource
 
