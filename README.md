@@ -1441,6 +1441,23 @@ spec:
 ### Kubernetes - Ingess
 
 - None of the service types work at OSI layer 7 (e.g. http, https, etc)
+- Ingress is a resource type that exposes services at layer 7
+
+- Ingress Controllers
+    - Ingress is a resource type that exposes services at layer 7
+    - Ingress is not a service type
+    - Ingress is a resource type that uses an Ingress Controller
+    - Ingress Controller is a service type that exposes services at layer 7
+    - Ingress Controller
+
+- Nginx is popular but Traefik, HAProxy, F5, Envoy, Istio and others are available
+    - Traefik is a popular open source reverse proxy and load balancer for HTTP and TCP-based applications that is easy, dynamic, automatic, fast, full-featured, production proven, provides metrics, and integrates with every major cluster technology... No wonder it's so popular!
+    - HAProxy is a free, very fast and reliable solution offering high availability, load balancing, and proxying for TCP and HTTP-based applications. It is particularly suited for very high traffic web sites and powers quite a number of the world's most visited ones.
+    - Nginx is a free, open-source, high-performance HTTP server and reverse proxy, as well as an IMAP/POP3 proxy server. Nginx is known for its high performance, stability, rich feature set, simple configuration, and low resource consumption.
+    - F5 is a commercial solution that provides a suite of services that can be used to provision, secure, and operate applications across multi-cloud environments. F5 BIG-IP is a popular commercial solution that provides a suite of services that can be used to provision, secure, and operate applications across multi-cloud environments.
+    - Envoy is a high-performance C++ distributed proxy designed for single services and applications, as well as a communication bus and “universal data plane” designed for large microservice “service mesh” architectures. Envoy is a high-performance C++ distributed proxy designed for single services and applications, as well as a communication bus and “universal data plane” designed for large microservice “service mesh” architectures.
+    - Istio is an open platform for providing a uniform way to integrate microservices, manage traffic flow across microservices, enforce policies and aggregate telemetry data. Istio is an open platform for providing a uniform way to integrate microservices, manage traffic flow across microservices, enforce policies and aggregate telemetry data.
+
 
 
 ##### Clean up commands:
