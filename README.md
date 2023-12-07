@@ -1458,6 +1458,21 @@ spec:
     - Envoy is a high-performance C++ distributed proxy designed for single services and applications, as well as a communication bus and “universal data plane” designed for large microservice “service mesh” architectures. Envoy is a high-performance C++ distributed proxy designed for single services and applications, as well as a communication bus and “universal data plane” designed for large microservice “service mesh” architectures.
     - Istio is an open platform for providing a uniform way to integrate microservices, manage traffic flow across microservices, enforce policies and aggregate telemetry data. Istio is an open platform for providing a uniform way to integrate microservices, manage traffic flow across microservices, enforce policies and aggregate telemetry data.
 
+### Kubernetes - CRDs and Operator Pattern
+
+- You can add 3rd party resources to Kubernetes with Custom Resource Definitions (CRDs)
+- This extends the Kubernetes API and CLI
+- Operator pattern is a way to automate deployment and management of complex apps
+- Examples of CRDs and Operators:
+    - etcd-operator (etcd)
+    - Prometheus Operator (monitoring)
+    - Vault Operator  (secrets)
+    - MySQL Operator (databases)
+    - backup-operator (backups)
+    - custom ingress controllers (ingress)
+    - etc
+- Don't want to add too many CRDs and Operators (adds complexity)
+
 
 
 ##### Clean up commands:
