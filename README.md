@@ -1473,7 +1473,44 @@ spec:
     - etc
 - Don't want to add too many CRDs and Operators (adds complexity)
 
+### Kubernetes - Higher Deployment Abstractions
 
+- All our `kubectl` commands just talk to the Kubernetes API
+- Kuberenetes has limited built-in templating, versioning, tracking and managment of apps
+- There are now many tools that provide higher level abstractions for Kubernetes
+    - Helm (most popular - most distros support it)
+    - Draft
+    - Ksonnet
+    - Skaffold
+    - Compose on Kubernetes (comes with Docker Desktop)
+    - Kustomize (comes with kubectl)
+    - etc
+- These tools are not mutually exclusive, you can use them together
+
+### Kubernetes - Dashboard
+
+- Default GUI for upstream Kubernetes
+   - github.com/kubernetes/dashboard
+- Some distros have their own GUI
+   - Docker EE
+   - OpenShift
+   - Rancher
+   - etc
+- Clouds don't have it by default
+- Lets you view and manage cluster resources
+- Be careful - as using these dashboard can be a security risk
+
+### Kubernetes - Namespaces and Contexts
+
+- Namespaces are a way to divide cluster resources between multiple users, teams, projects, environments, etc
+- Not related to Docker namespaces/Linux namespaces
+- Won't be needed in small environments
+- There are built-in namespaces
+    - default
+    - kube-node-lease
+    - kube-public
+    - kube-system
+    - docker
 
 ##### Clean up commands:
 - `kubectl delete <resource type> <resource name>` - delete resource
