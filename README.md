@@ -1511,6 +1511,27 @@ spec:
     - kube-public
     - kube-system
     - docker
+- To view all namespaces use `kubectl get namespaces`
+- `~/kube/config` file stores contexts (e.g. clusters, users, namespaces, etc)
+- `kubectl config get-contexts` - get contexts
+- `kubectl config set*` - set context
+
+### Kubernetes - Future of Kubernetes
+
+- More focus on security and stability (boring but important)
+- Clearing deprecated APIs like kubectl run generator (e.g. `kubectl run my-nginx --image nginx`)
+- Improving features like server side dry-run
+- More declarative features like `kubectl diff`
+- Better support for Windows containers
+- More edge cases, kubeadm HA clusters (e.g. 3 control planes, etc)
+
+#### Related Projects
+
+- Kuberentes has become the differencing and scheduling layer for many projects
+- Knative (serverless workloads on Kubernetes)
+- K3s (lightweight Kubernetes)
+- k3OS (lightweight Kubernetes minimal linux OS) - was meant for IoT devices, but can be used for other things
+- Service Mesh (e.g. Istio, Linkerd, etc) - New layer in distributed app traffic for better control, security and monitoring
 
 ##### Clean up commands:
 - `kubectl delete <resource type> <resource name>` - delete resource
