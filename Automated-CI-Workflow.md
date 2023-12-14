@@ -65,3 +65,47 @@
     - push image to registry
     - deploy (1 or more environments)
 
+## GitHub Actions
+
+### Intro
+
+- GitHub Actions is a CI/CD system built into GitHub.
+- GitHub Actions is free for public repositories.
+
+### Adding basic docker build
+
+- Create a new file in the `.github/workflows` directory.
+- Name the file `docker-build.yml`.
+- Add the following content to the file:
+
+```yaml
+name: Docker Build
+
+on:
+  push:
+    branches:
+      - main
+    pull_request:
+      branches:
+        - main
+
+jobs:
+    build-image:
+        name: Build Docker Image
+        runs-on: ubuntu-latest
+        steps:
+            - name: Login to DockerHub
+              uses: docker/login-action@v1
+              with:
+                  username: ${{ secrets.DOCKERHUB_USERNAME }}
+                  password: ${{ secrets.DOCKERHUB_TOKEN }}
+
+            - name: Build Docker Image
+                uses: docker/build-push-action@v2
+                with:
+                    push: ${{ github.event_name != 'pull_request' }}
+                    tags: ${{ github.event_name != 'pull_request' && 'latest' }}
+```
+
+    
+- Commit and push the file to GitHub.
