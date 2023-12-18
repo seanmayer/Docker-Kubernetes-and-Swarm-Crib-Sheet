@@ -112,7 +112,7 @@ jobs:
 - BuildKit is a build engine for Docker.
 - BuildKit can be used to cache layers during a build.
 
-### Adding BuildKit Build Layer Caching
+### Adding BuildKit Build Layer Caching (Speeds up builds)
 
 - Create a new file in the `.github/workflows` directory.
 - Name the file `docker-build.yml`.
@@ -149,6 +149,57 @@ jobs:
                 with:
                     push: ${{ github.event_name != 'pull_request' }}
                     tags: ${{ github.event_name != 'pull_request' && 'latest' }}
+                    cache-from: type=gha
+                    cache-to: type=gha,mode=max
 ```
+
+- Commit and push the file to GitHub.
+
+### Adding Multi-Platform Build Support (ARM64, AMD64, etc.)
+
+- Create a new file in the `.github/workflows` directory.
+- Name the file `docker-build.yml`.
+- Add the following content to the file:
+
+```yaml
+name: Docker Build
+
+on:
+  push:
+    branches:
+      - main
+    pull_request:
+      branches:
+        - main
+
+jobs:
+    build-image:
+        name: Build Docker Image
+        runs-on: ubuntu-latest
+        steps:
+
+            - name: Set up QEMU
+              uses: docker/setup-qemu-action@v1
+
+            - name: Set up Docker BuildKit
+              uses: docker/setup-buildx-action@v1
+
+            - name: Login to DockerHub
+              uses: docker/login-action@v1
+              with:
+                  username: ${{ secrets.DOCKERHUB_USERNAME }}
+                  password: ${{ secrets.DOCKERHUB_TOKEN }}
+
+            - name: Build Docker Image
+                uses: docker/build-push-action@v2
+                with:
+                    push: ${{ github.event_name != 'pull_request' }}
+                    tags: ${{ github.event_name != 'pull_request' && 'latest' }}
+                    cache-from: type=gha
+                    cache-to: type=gha,mode=max
+                    platforms: linux/amd64,linux/arm64
+```
+
+`platforms: linux/amd64,linux/arm64` - these are the same list of platform images that you see in Docker Hub.
 
 - Commit and push the file to GitHub.
