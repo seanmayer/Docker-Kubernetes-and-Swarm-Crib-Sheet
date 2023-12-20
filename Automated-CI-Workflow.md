@@ -200,6 +200,8 @@ jobs:
                     platforms: linux/amd64,linux/arm64
 ```
 
+- Note the addition of the line
+
 `platforms: linux/amd64,linux/arm64` - these are the same list of platform images that you see in Docker Hub.
 
 - Commit and push the file to GitHub.
