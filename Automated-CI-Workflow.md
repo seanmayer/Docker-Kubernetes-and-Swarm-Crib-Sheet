@@ -154,6 +154,8 @@ jobs:
 ```
 
 - Commit and push the file to GitHub.
+- These changes will add the following features:
+    - BuildKit Build Layer Caching
 
 ### Adding Multi-Platform Build Support (ARM64, AMD64, etc.)
 
@@ -201,7 +203,71 @@ jobs:
 ```
 
 - Note the addition of the line
+- These changes will add the following features:
+    - Multi-Platform Build Support
 
 `platforms: linux/amd64,linux/arm64` - these are the same list of platform images that you see in Docker Hub.
 
 - Commit and push the file to GitHub.
+
+### Metadata and Dynamic Tags
+
+- Create a new file in the `.github/workflows` directory.
+- Name the file `docker-build.yml`.
+- Add the following content to the file:
+
+```yaml
+name: Docker Build
+
+on:
+  push:
+    branches:
+      - main
+    pull_request:
+      branches:
+        - main
+
+jobs:
+    build-image:
+        name: Build Docker Image
+        runs-on: ubuntu-latest
+        steps:
+
+            - name: Set up QEMU
+              uses: docker/setup-qemu-action@v1
+
+            - name: Set up Docker BuildKit
+              uses: docker/setup-buildx-action@v1
+
+            - name: Login to DockerHub
+              uses: docker/login-action@v1
+              with:
+                  username: ${{ secrets.DOCKERHUB_USERNAME }}
+                  password: ${{ secrets.DOCKERHUB_TOKEN }}
+
+            - name: Docker meta
+                id: meta
+                uses: docker/metadata-action@v3
+                with:
+                    images: docker.io/${{ secrets.DOCKERHUB_USERNAME }}/hello-world
+                    tags: |
+                        type=raw,value=04
+                        type=raw,value=latest, enable=${{ endsWith(github.ref, github.event.repository) }}
+                        type=ref,event=pr
+                        type=ref,event=branch
+                        type=semver, prefix={{ version }}}
+            - name: Build Docker Image
+                uses: docker/build-push-action@v2
+                with:
+                    push: true
+                    push: ${{ github.event_name != 'pull_request' }}
+                    tags: ${{ github.event_name != 'pull_request' && 'latest' }}
+                    cache-from: type=gha
+                    cache-to: type=gha,mode=max
+                    platforms: linux/amd64,linux/arm64
+```
+
+- Commit and push the file to GitHub.
+- These changes will add the following features:
+    - Metadata
+    - Dynamic Tags
