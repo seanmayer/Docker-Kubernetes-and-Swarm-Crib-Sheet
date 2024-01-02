@@ -894,6 +894,22 @@ Summary on Tips
 - Find a way to out source your plumbing (e.g. Docker Trusted Registry, etc)
 - Realise parts of your tech stack may change (stay flexible)
 
+## Docker Security
+
+- Docker security link can be found here: https://docs.docker.com/engine/security/security/
+- kernel namespaces - isolating resources per process
+- control groups - limit resources per process
+
+### Docker Engine out of the box security
+
+- Quick note: Don't run random images from the internet (use official images)
+- Just use Docker, default settings are secure
+    - greatly reduces attack surface vs running apps directly on host
+    - it applies default apparmor and seccomp profiles
+    - also uses whitelisting of kernel capabilities
+    - certain apps you may need to run in privileged mode (e.g. VPN, etc) as they need access to the host network stack due to the permissions they require
+    - Docker is not a security solution, it is a tool to help you build a secure solution
+- Most people don't know how to use apparmor, seccomp, or kernel capabilities for each app, so Docker does this for you! :)
 # Kubernetes
 
 - Kubernetes is an open source container orchestration tool
