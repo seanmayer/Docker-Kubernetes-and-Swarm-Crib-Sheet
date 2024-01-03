@@ -910,6 +910,13 @@ Summary on Tips
     - certain apps you may need to run in privileged mode (e.g. VPN, etc) as they need access to the host network stack due to the permissions they require
     - Docker is not a security solution, it is a tool to help you build a secure solution
 - Most people don't know how to use apparmor, seccomp, or kernel capabilities for each app, so Docker does this for you! :)
+
+### Docker Bench for Security
+
+- Docker Bench for Security is a script that checks for dozens of common best-practices around deploying Docker containers in production
+- github repository: https://github.com/docker/docker-bench-security
+- This uses the CIS Docker Benchmark (CIS = Center for Internet Security) (CIS Docker Benchmark is a set of best practices for securing Docker containers in production (e.g. https://www.cisecurity.org/benchmark/docker/)) industry standard for secure configuration
+
 # Kubernetes
 
 - Kubernetes is an open source container orchestration tool
