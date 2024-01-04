@@ -917,6 +917,32 @@ Summary on Tips
 - github repository: https://github.com/docker/docker-bench-security
 - This uses the CIS Docker Benchmark (CIS = Center for Internet Security) (CIS Docker Benchmark is a set of best practices for securing Docker containers in production (e.g. https://www.cisecurity.org/benchmark/docker/)) industry standard for secure configuration
 
+### Docker USER and Dockerfile
+
+- Avoid running apps as root in container (if you can)
+   - if you were to run python or node app for example it would run as root by default
+      - this is because the default user in the container is root
+
+- if you go to a docker file and you see the following:
+```
+FROM node:alpine
+RUN npm install
+CMD ["node", "app.js"]
+```
+- this is not secure as it is running as root
+
+- if you go to a docker file and you see the following:
+```
+FROM node:alpine
+RUN addgroup -S app && adduser -S -g app app
+USER app
+RUN npm install
+CMD ["node", "app.js"]
+```
+- this is secure as it is running as a non-root user
+
+- Other reason why you want to do this if there is a vulnerability in docker or linux kernel, it will be harder for the attacker to get root access to the host machine
+
 # Kubernetes
 
 - Kubernetes is an open source container orchestration tool
