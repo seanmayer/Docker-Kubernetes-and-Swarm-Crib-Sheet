@@ -939,9 +939,11 @@ USER app
 RUN npm install
 CMD ["node", "app.js"]
 ```
-- this is secure as it is running as a non-root user
+- this is secure as it is running as a non-root user (app) (this is the best practice)
 
 - Other reason why you want to do this if there is a vulnerability in docker or linux kernel, it will be harder for the attacker to get root access to the host machine
+
+
 
 # Kubernetes
 
