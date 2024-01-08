@@ -943,7 +943,13 @@ CMD ["node", "app.js"]
 
 - Other reason why you want to do this if there is a vulnerability in docker or linux kernel, it will be harder for the attacker to get root access to the host machine
 
+### Docker User Namespaces (more advanced security)
 
+- Docker User Namespaces is a feature that allows you to remap the root user in a container to a non-root user on the host
+
+- Not enabled by default, requires extra configuration (e.g. `dockerd --userns-remap=default`)
+
+- Not everything works with user namespaces (e.g. networking, volumes, etc) (e.g. if you use user namespaces, you can't use host networking)
 
 # Kubernetes
 
