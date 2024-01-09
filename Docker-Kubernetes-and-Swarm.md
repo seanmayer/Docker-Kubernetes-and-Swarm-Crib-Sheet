@@ -951,6 +951,39 @@ CMD ["node", "app.js"]
 
 - Not everything works with user namespaces (e.g. networking, volumes, etc) (e.g. if you use user namespaces, you can't use host networking)
 
+### Code Repo and Image Scanning
+
+- Snyk - https://snyk.io/ (code repo and image scanning)
+- Twistlock - https://www.twistlock.com/ (image scanning)
+- Anchore - https://anchore.com/ (image scanning)
+
+- Scan as early as possible (Shift Left Security)
+   - Automated scanners can help you achieve this
+
+- Image scanning - scanning code dependencies
+    - Trivy - github.com/aquasecurity/trivy (open source - scans images for cve vulnerabilities)
+    - Clair - github.com/coreos/clair (open source - scans images for cve vulnerabilities)
+
+- You need to make the decison on where you want to scan:
+    - OS Packages
+    - Application Dependencies
+    - Easy to use
+    - Accuracy
+    - Suitabe for CI/CD
+
+- Adding micro scanner (Trivy):
+```
+   ADD https://get.aquasec.com/microscanner /
+    RUN chmod +x /microscanner
+    RUN /microscanner <token> [--continue-on-failure]
+```
+- Continue on failure is optional, if you don't use this, it will fail the build if there is a vulnerability
+
+- Good to know you image is vulnerabiliy free before you set up preferable
+
+- You have to agree with security team on what is acceptable on vulnerabilities as it is not always possible to have zero vulnerabilities
+
+
 # Kubernetes
 
 - Kubernetes is an open source container orchestration tool
