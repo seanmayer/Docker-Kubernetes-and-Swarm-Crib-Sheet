@@ -894,7 +894,7 @@ Summary on Tips
 - Find a way to out source your plumbing (e.g. Docker Trusted Registry, etc)
 - Realise parts of your tech stack may change (stay flexible)
 
-## Docker Security
+## Docker Security (Docker Security Scanning)
 
 - Docker security link can be found here: https://docs.docker.com/engine/security/security/
 - kernel namespaces - isolating resources per process
