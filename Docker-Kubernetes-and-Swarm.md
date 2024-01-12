@@ -983,6 +983,21 @@ CMD ["node", "app.js"]
 
 - You have to agree with security team on what is acceptable on vulnerabilities as it is not always possible to have zero vulnerabilities
 
+### Docker Runtime Security
+
+- Sysdig Falco - https://sysdig.com/opensource/falco/ (open source) (runtime security)
+    - this will audit and log all activity on your host machine
+
+What does runtime security mean?
+- Checking for malicious activity in your containers (exec into production container and run commands, or copy files out of container, or mounting sensitive files into container)
+
+### Docker Content Trust (Signing Images)
+
+- Content Trust - https://docs.docker.com/engine/security/trust/content_trust/ (signing images)
+    - this is a feature that allows you to sign images
+    - this is not enabled by default
+    - this is not enabled by default because it requires a key store (e.g. notary)
+    - This feature allows you to sign images and verify the signature before pulling the image
 
 # Kubernetes
 
