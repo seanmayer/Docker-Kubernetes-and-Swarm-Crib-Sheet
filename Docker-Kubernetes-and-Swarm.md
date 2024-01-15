@@ -999,6 +999,17 @@ What does runtime security mean?
     - this is not enabled by default because it requires a key store (e.g. notary)
     - This feature allows you to sign images and verify the signature before pulling the image
 
+### Docker Rootless mode
+
+- Running Docker deamon as a non-root user
+- Does not work in every case
+- Does not allow custom networking
+- Docker Rootless mode - https://docs.docker.com/engine/security/rootless/ (running docker without root)
+    - this is not enabled by default
+    - this is not enabled by default because it requires a key store (e.g. notary)
+    - This feature allows you to run docker without root
+    - This feature is not recommended for production
+
 # Kubernetes
 
 - Kubernetes is an open source container orchestration tool
