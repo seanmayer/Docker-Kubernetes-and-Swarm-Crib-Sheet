@@ -1010,6 +1010,14 @@ What does runtime security mean?
     - This feature allows you to run docker without root
     - This feature is not recommended for production
 
+### Docker Security Windows Containers
+
+- Windows Containers are a completely different technology than Linux Containers
+- Windows Containers are not as mature as Linux Containers
+Windows does not have the same security features as Linux (e,g, docker bench, running as non-root, namespaces, runtime bad behaviour, docker rootless, etc)
+- Windows does have code scanning (e.g. snyk, etc)
+- Windows does have image scanning (e.g. trivy, etc)
+
 # Kubernetes
 
 - Kubernetes is an open source container orchestration tool
