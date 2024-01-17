@@ -1018,6 +1018,33 @@ Windows does not have the same security features as Linux (e,g, docker bench, ru
 - Windows does have code scanning (e.g. snyk, etc)
 - Windows does have image scanning (e.g. trivy, etc)
 
+### Docker what are distroless images?
+
+- Distroless images are Docker images that contain only your application and its runtime dependencies
+
+- if you can do distroless images, there is no apps, yum, apt, etc, so there is less attack surface (all the stuff you would normally have in a container)
+
+- distroless images are not very common
+    1. Apps generally need all the stuff that is in a container (apt packages, ssl libaries, etc)
+    2. You need a team that is willing to maintain the distroless images (e.g. if there is a vulnerability in the ssl library, you need to update the distroless image) - cant shell into the container and update the ssl library
+
+- Golang, C++, Java, Node, Python, etc all have distroless images (that can build single binary images)
+
+- Security benefits of distroless images:
+    - No shell
+    - No package manager
+    - No extra libraries
+    - No extra binaries
+    - No extra files
+    - No extra users
+    - No extra anything
+
+- Security downsides of distroless images:
+    - Your already including those binaries in your image that maybe vulnerable
+    - Harder to security scan
+
+- distroless images are relatively harder to build and maintain
+
 # Kubernetes
 
 - Kubernetes is an open source container orchestration tool
