@@ -1045,6 +1045,16 @@ Windows does not have the same security features as Linux (e,g, docker bench, ru
 
 - distroless images are relatively harder to build and maintain
 
+### Is K8s and Swarm Secrets secure?
+
+- K8s and Swarm Secrets are secure by default
+- Your application has to have secrets stored somewhere
+- And there will be unecrypted secrets in memory
+- If a hacker has root in your container, they can get your secrets
+    - So first step is to make sure your container is secure (e.g. don't run as root, etc)
+
+- Vault and one time passwords are more secure than K8s and Swarm Secrets (but they are more complex to setup and maintain)
+
 # Kubernetes
 
 - Kubernetes is an open source container orchestration tool
