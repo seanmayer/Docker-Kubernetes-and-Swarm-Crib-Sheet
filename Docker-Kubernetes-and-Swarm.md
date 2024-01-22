@@ -1055,6 +1055,38 @@ Windows does not have the same security features as Linux (e,g, docker bench, ru
 
 - Vault and one time passwords are more secure than K8s and Swarm Secrets (but they are more complex to setup and maintain)
 
+### Docker Security Summary
+
+- Docker is secure by default
+- Docker is not a security solution
+- Docker is a tool to help you build a secure solution
+- Docker Bench for Security is a great tool to check your Docker security
+- Docker User Namespaces is a great feature to help you secure your containers
+- Docker Content Trust is a great feature to help you secure your images
+- Docker Rootless mode is a great feature to help you secure your host
+- Distroless images are a great way to reduce the attack surface of your images
+- Docker Secrets are secure by default
+- Docker Secrets are not a security solution
+- Docker Secrets are a tool to help you build a secure solution
+
+## Docker Buildx
+
+- Docker Buildx is a CLI plugin that extends the docker command with the full support of the features provided by Moby BuildKit builder toolkit
+
+- Docker Buildx -
+    - You can build on multiple nodes at the same time
+    - New build functionality caching, exporting, importing, etc
+    - New build functionality build secrets, build stages, etc
+
+Example commands:
+
+- `docker buildx build --help` - show help for build command (e.g. `docker buildx build --help`, this command shows help for build command)
+- `docker buildx ls` - list builders
+- `docker buildx create --name mybuilder` - create builder
+- `docker buildx use mybuilder` - use builder
+- `docker buildx inspect --bootstrap` - inspect builder
+- `docker buildx build --platform linux/amd64,linux/arm64,linux/arm/v7 -t <image name> --push .` - build image for multiple platforms
+
 # Kubernetes
 
 - Kubernetes is an open source container orchestration tool
