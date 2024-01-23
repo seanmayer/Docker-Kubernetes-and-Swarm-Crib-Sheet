@@ -1087,6 +1087,30 @@ Example commands:
 - `docker buildx inspect --bootstrap` - inspect builder
 - `docker buildx build --platform linux/amd64,linux/arm64,linux/arm/v7 -t <image name> --push .` - build image for multiple platforms
 
+## Docker Context and SSH Connections
+
+- Docker Context - https://docs.docker.com/engine/context/working-with-contexts/ (e.g. `docker context --help`, this command shows help for context command)
+    - this is a feature that allows you to connect to remote docker daemons
+    - this is a feature that allows you to connect to remote docker daemons over SSH
+    - this is a feature that allows you to connect to remote docker daemons over SSH and TLS
+    - this is a feature that allows you to connect to remote docker daemons over SSH and TLS and with a CA
+    - this is a feature that allows you to connect to remote docker daemons over SSH and TLS and with a CA and with a client certificate
+
+- Docker Context commands:
+    - `docker context create --help` - show help for create command (e.g. `docker context create --help`, this command shows help for context create command)
+    - `docker context ls` - list contexts
+    - `docker context use <context name>` - use context
+    - `docker context inspect <context name>` - inspect context
+    - `docker context rm <context name>` - remove context
+
+- Old way of connecting to remote docker daemons:
+    - DOCKER_HOST="tcp://<ip address>:2376" docker container ls
+
+- New way of connecting to remote docker daemons:
+    - `docker context create <context name> --docker "host=ssh://<user>@<ip address>"` - create context
+    - `docker context use <context name>` - use context
+    - `docker container ls` - list containers
+
 # Kubernetes
 
 - Kubernetes is an open source container orchestration tool
