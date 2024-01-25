@@ -1121,6 +1121,21 @@ Example commands:
     - `docker context use <context name>` - use context
     - `docker container ls` - list containers
 
+- New way of connecting to remote docker daemons with TLS and CA and client certificate: (this is the recommended way)
+   - `docker context create <context name> --docker "host=ssh://<user>@<ip address>,tlsverify=1,tlscacert=<ca cert path>,tlscert=<client cert path>,tlskey=<client key path>"` - create context
+    - `docker context use <context name>` - use context
+    - `docker container ls` - list containers
+
+- New way of connecting to remote docker daemons with TLS and CA and client certificate and password: (this is the recommended way)
+    - `docker context create <context name> --docker "host=ssh://<user>@<ip address>,tlsverify=1,tlscacert=<ca cert path>,tlscert=<client cert path>,tlskey=<client key path>,password=<password>"` - create context
+    - `docker context use <context name>` - use context
+    - `docker container ls` - list containers
+
+- New way of connecting to remote docker daemons with TLS and CA and client certificate and password and ssh key: (this is the recommended way)
+    - `docker context create <context name> --docker "host=ssh://<user>@<ip address>,tlsverify=1,tlscacert=<ca cert path>,tlscert=<client cert path>,tlskey=<client key path>,password=<password>,sshkey=<ssh key path>"` - create context
+    - `docker context use <context name>` - use context
+    - `docker container ls` - list containers
+
 # Kubernetes
 
 - Kubernetes is an open source container orchestration tool
