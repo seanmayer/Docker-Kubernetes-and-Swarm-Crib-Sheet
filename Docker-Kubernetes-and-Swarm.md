@@ -1126,6 +1126,10 @@ Example commands:
     - `docker context use <context name>` - use context
     - `docker container ls` - list containers
 
+- Check what docker context you are using:
+    - `docker context ls` - list contexts
+    - `docker context inspect <context name>` - inspect context
+
 - New way of connecting to remote docker daemons with TLS and CA and client certificate and password: (this is the recommended way)
     - `docker context create <context name> --docker "host=ssh://<user>@<ip address>,tlsverify=1,tlscacert=<ca cert path>,tlscert=<client cert path>,tlskey=<client key path>,password=<password>"` - create context
     - `docker context use <context name>` - use context
@@ -1135,6 +1139,47 @@ Example commands:
     - `docker context create <context name> --docker "host=ssh://<user>@<ip address>,tlsverify=1,tlscacert=<ca cert path>,tlscert=<client cert path>,tlskey=<client key path>,password=<password>,sshkey=<ssh key path>"` - create context
     - `docker context use <context name>` - use context
     - `docker container ls` - list containers
+
+## Docker App and Image Packaging of Compose Files (Docker plugin)
+
+- Docker App - github.com/docker/app (e.g. `docker app --help`, this command shows help for app command)
+    - this is a feature that allows you to package your compose files into a single file
+    - this is a feature that allows you to package your compose files into a single file and share it with others
+    - this is a feature that allows you to package your compose files into a single file and share it with others and deploy it to a swarm cluster
+
+- Docker App commands:
+    - `docker app inspect <app name>` - inspect app
+    - `docker app push <app name>` - push app
+    - `docker app pull <app name>` - pull app
+    - `docker app rm <app name>` - remove app
+
+## Docker Plugins
+
+- To enable plugins you need to add the following to your docker daemon.json file:
+```
+{
+  "experimental": true
+}
+``` 
+- Plugins are a way to extend Docker
+- Plugins are a way to extend Docker with new commands
+- Plugins are a way to extend Docker with new features
+- Plugins are a way to extend Docker with new functionality
+- Plugins are a way to extend Docker with new orchestration
+- Plugins are a way to extend Docker with new networking
+- Plugins are a way to extend Docker with new storage
+- Plugins are a way to extend Docker with new volume drivers
+- Plugins are a way to extend Docker with new logging
+- Plugins are a way to extend Docker with new security
+- Plugins are a way to extend Docker with new authentication
+- Plugins are a way to extend Docker with new authorization
+- Plugins are a way to extend Docker with new image formats
+- Plugins are a way to extend Docker with new image management
+- Plugins are a way to extend Docker with new image scanning... etc
+
+- Docker plugins are not enabled by default
+- Docker plugins are not enabled by default because they are experimental
+- Docker plugins are not enabled by default because they are not production ready
 
 # Kubernetes
 
