@@ -1004,11 +1004,17 @@ What does runtime security mean?
 - Running Docker deamon as a non-root user
 - Does not work in every case
 - Does not allow custom networking
+- Does not allow privileged containers
+- Does not allow mounting host volumes
+- Does not allow changing host namespaces
+- Does not allow changing host cgroups
+- Does not allow changing host capabilities
 - Docker Rootless mode - https://docs.docker.com/engine/security/rootless/ (running docker without root)
     - this is not enabled by default
     - this is not enabled by default because it requires a key store (e.g. notary)
     - This feature allows you to run docker without root
     - This feature is not recommended for production
+
 
 ### Docker Security Windows Containers
 
