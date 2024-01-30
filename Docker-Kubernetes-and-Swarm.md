@@ -1187,6 +1187,27 @@ Example commands:
 - Docker plugins are not enabled by default because they are experimental
 - Docker plugins are not enabled by default because they are not production ready
 
+## Docker Desktop Enterprise
+
+- Docker Desktop Enterprise is a desktop client for Docker EE
+- Docker Desktop Enterprise is a desktop client for Docker EE Basic
+- Docker Desktop Enterprise is a desktop client for Docker EE Standard
+- Docker Desktop Enterprise is a desktop client for Docker EE Advanced
+
+- What is docer enterprise used for?
+    - Docker Desktop Enterprise is used for development
+    - Docker Desktop Enterprise is used for testing
+    - Docker Desktop Enterprise is used for demos
+    - Docker Desktop Enterprise is used for proof of concepts
+    - Docker Desktop Enterprise is used for production
+
+- Docker Desktop Enterprise is not free
+
+- Docker Desktop Enterprise provides a GUI for Docker EE 
+
+
+
+
 # Kubernetes
 
 - Kubernetes is an open source container orchestration tool
