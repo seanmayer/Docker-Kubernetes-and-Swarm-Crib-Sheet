@@ -1205,8 +1205,21 @@ Example commands:
 
 - Docker Desktop Enterprise provides a GUI for Docker EE 
 
+## Docker Enterprise Clusters
 
+- Docker Enterprise Clusters is a way to manage Docker EE clusters
+- url: https://docs.docker.com/ee/ucp/ (e.g. `docker cluster --help`, this command shows help for cluster command)
+- Docker Enterprise Clusters is a way to manage Docker EE clusters from the command line
+- Docker Enterprise Clusters is a way to manage Docker EE clusters from the GUI
+- Docker Enterprise Clusters is a way to manage Docker EE clusters from the API
 
+- Docker Enterprise Clusters is not free
+
+- Docker Cluster commands:
+    - `docker cluster ls` - list clusters
+    - `docker cluster inspect <cluster name>` - inspect cluster
+    - `docker cluster rm <cluster name>` - remove cluster
+ 
 
 # Kubernetes
 
