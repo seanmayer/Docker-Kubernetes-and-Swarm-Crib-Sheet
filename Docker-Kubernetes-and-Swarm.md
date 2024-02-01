@@ -1219,7 +1219,20 @@ Example commands:
     - `docker cluster ls` - list clusters
     - `docker cluster inspect <cluster name>` - inspect cluster
     - `docker cluster rm <cluster name>` - remove cluster
- 
+
+## Docker Alpine based images (security)
+
+- Are they more secure?
+   - The Alpine Problem:
+        - Alpine is a minimal Linux distro (which is good) less attack surface
+        - But space savings is not everything and probably not something to aim for
+        - Scanning Alpine images is harder (because of the way Alpine packages are built)
+        - Alpine is not as well tested as other distros
+        - Some tools don't work on Alpine (e.g. glibc, etc)
+
+- Using default images is typically more secure than using Alpine images (e.g. ubuntu, centos, etc)
+
+- Images like Debian, Ubuntu, CentOS, etc are more also getting smaller over time (e.g. ubuntu slim, etc)
 
 # Kubernetes
 
