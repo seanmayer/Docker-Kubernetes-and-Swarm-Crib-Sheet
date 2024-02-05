@@ -1245,6 +1245,29 @@ Example commands:
 - Many cloud providers offer managed Kubernetes clusters (e.g. AWS EKS, Azure AKS, Google GKE, etc)
 - Many vendors make distributions of Kubernetes (e.g. Docker EE, Red Hat OpenShift, Helm, etc)
 
+## Handling Non-root users in containers and file permissions
+
+Gosu vs su-exec vs sudo vs chown
+
+- Gosu
+    - Description: gosu is a simple tool designed to be used in Docker containers to step down from root to a non-root user. It is similar to su but does not require a shell and is more suited for Docker environments where you want to avoid running processes as root for security reasons.
+    - Usage: It is typically used in Dockerfiles or entry scripts to change the current user. Unlike su, gosu does not start a new shell, making it more straightforward for executing single commands as a specific user. It ensures that signals are properly forwarded to the child process, making it more Docker-friendly.
+    - Example: In a Dockerfile or entrypoint script, you might see something like gosu username command, which executes command as username.
+- Su-exec
+    - Description: su-exec is a very minimalistic substitute for gosu, with a smaller footprint. It is essentially a simple su and sudo alternative for containers, designed to switch user and group id, setgroups and execute a new command.
+    - Usage: Like gosu, it's used in Docker environments where you need to switch from the root user to a non-root user before running the main process. It's favored in scenarios where minimalism is key, due to its smaller size and more straightforward implementation.
+    - Example: Usage would be similar to gosu, such as su-exec user command, to execute command as user.
+- Sudo
+    - Description: sudo is a powerful utility that allows a permitted user to execute a command as the superuser or another user, as specified by the security policy. It is more complex and feature-rich compared to gosu and su-exec.
+    - Usage: In Docker containers, sudo might be used less frequently for running the main process as a non-root user because it introduces complexity and additional size. However, it can be useful for more complex permission management scenarios within a container where different commands may need to be run under different users.
+    - Example: Configuration in a Docker environment might involve adding a non-root user to the sudoers file and then using sudo -u username command to run specific commands as that user.
+- Chown
+    - Description: chown is a Unix/Linux command for changing the ownership of files and directories. It doesn't execute commands as a different user but is crucial for managing file permissions in a containerized environment.
+    - Usage: Before switching to a non-root user with tools like gosu or su-exec, you might need to ensure that the user has the necessary permissions on files or directories they need to access. chown can be used to change the ownership of those resources to the non-root user.
+    - Example: In a Dockerfile, you might see commands like chown -R user:user /path/to/directory, which changes the ownership of /path/to/directory (and its contents, recursively) to user.
+
+
+
 ## Why Kubernetes?
 
 - Kubernetes is the most popular container orchestration tool
