@@ -1266,7 +1266,12 @@ Gosu vs su-exec vs sudo vs chown
     - Usage: Before switching to a non-root user with tools like gosu or su-exec, you might need to ensure that the user has the necessary permissions on files or directories they need to access. chown can be used to change the ownership of those resources to the non-root user.
     - Example: In a Dockerfile, you might see commands like chown -R user:user /path/to/directory, which changes the ownership of /path/to/directory (and its contents, recursively) to user.
 
+## Apache web server.. many sites in one container?
 
+- Apache web server has the ability to host multiple sites in one container
+- Running multiple sites in one container is not recommended
+- Running multiple sites in one container is not recommended because it is not scalable
+- 6-10 sites per container is a good rule of thumb
 
 ## Why Kubernetes?
 
