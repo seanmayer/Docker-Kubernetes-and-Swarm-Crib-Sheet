@@ -1234,17 +1234,6 @@ Example commands:
 
 - Images like Debian, Ubuntu, CentOS, etc are more also getting smaller over time (e.g. ubuntu slim, etc)
 
-# Kubernetes
-
-- Kubernetes is an open source container orchestration tool
-- Kubernetes = K8s
-- Container orchestration is the automated process of managing and deploying containers
-- Released by Google in 2015, now maintained by a large community of contributors
-- Runs on top of Docker (usually) as a set of APIs in containers
-- Provides API/CLI to manage clusters of containers
-- Many cloud providers offer managed Kubernetes clusters (e.g. AWS EKS, Azure AKS, Google GKE, etc)
-- Many vendors make distributions of Kubernetes (e.g. Docker EE, Red Hat OpenShift, Helm, etc)
-
 ## Handling Non-root users in containers and file permissions
 
 Gosu vs su-exec vs sudo vs chown
@@ -1272,6 +1261,17 @@ Gosu vs su-exec vs sudo vs chown
 - Running multiple sites in one container is not recommended
 - Running multiple sites in one container is not recommended because it is not scalable
 - 6-10 sites per container is a good rule of thumb
+
+# Kubernetes
+
+- Kubernetes is an open source container orchestration tool
+- Kubernetes = K8s
+- Container orchestration is the automated process of managing and deploying containers
+- Released by Google in 2015, now maintained by a large community of contributors
+- Runs on top of Docker (usually) as a set of APIs in containers
+- Provides API/CLI to manage clusters of containers
+- Many cloud providers offer managed Kubernetes clusters (e.g. AWS EKS, Azure AKS, Google GKE, etc)
+- Many vendors make distributions of Kubernetes (e.g. Docker EE, Red Hat OpenShift, Helm, etc)
 
 ## Why Kubernetes?
 
