@@ -1262,6 +1262,11 @@ Gosu vs su-exec vs sudo vs chown
 - Running multiple sites in one container is not recommended because it is not scalable
 - 6-10 sites per container is a good rule of thumb
 
+## Docker Network IP Subnet Conflicts and Solutions
+
+- Docker Network IP Subnet Conflicts and Solutions
+    - Docker uses the default subnet
+
 # Kubernetes
 
 - Kubernetes is an open source container orchestration tool
