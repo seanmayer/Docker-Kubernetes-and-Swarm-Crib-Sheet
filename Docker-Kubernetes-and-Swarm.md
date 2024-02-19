@@ -1262,10 +1262,29 @@ Gosu vs su-exec vs sudo vs chown
 - Running multiple sites in one container is not recommended because it is not scalable
 - 6-10 sites per container is a good rule of thumb
 
-## Docker Network IP Subnet Conflicts and Solutions
+## Raspberry Pi and Docker
 
-- Docker Network IP Subnet Conflicts and Solutions
-    - Docker uses the default subnet
+- Raspberry Pi is a single board computer that runs Linux and can run Docker and can run Docker Swarm (e.g. Raspberry Pi 4, etc)
+
+### Considerations
+- **Raspberry Pi Model:** Choose models with more RAM and CPU power (e.g., Raspberry Pi 4 with 4GB or 8GB RAM) for better Docker performance.
+- **Operating System:** Use a compatible OS like Raspberry Pi OS or Ubuntu Server. Ensure it's up-to-date and supports Docker.
+- **Docker Installation:** Install Docker via the official script or package manager. Additional configuration may be required.
+- **ARM Architecture:** Use or build container images that are compatible with ARM architecture, as Raspberry Pi uses ARM processors.
+- **Performance and Resource Management:** Monitor and manage CPU and memory usage to prevent system overload.
+- **Storage:** Opt for high-quality SD cards or external storage for applications with high I/O throughput or significant write operations.
+- **Networking:** Customize network settings for complex applications or services requiring specific communication setups.
+
+### Capabilities
+- **Home Automation Projects:** Deploy software like Home Assistant, OpenHAB, or Domoticz in containers for home automation.
+- **Media Servers:** Run Plex, Jellyfin, or Emby in Docker containers to create a compact media server.
+- **Personal Web Servers:** Use containers for Apache, Nginx, or lightweight databases for personal web server applications.
+- **Network Monitoring and Security:** Implement Pi-hole or security monitoring tools in containers for enhanced network management and security.
+- **IoT and Edge Computing:** Leverage Docker for IoT applications and edge computing, running applications close to data sources.
+- **Development and Testing:** Utilize Docker for creating consistent development environments or testing applications across different configurations.
+
+This structured approach highlights the practical considerations for setting up Docker on a Raspberry Pi and outlines the diverse range of applications and projects that can benefit from this setup.
+
 
 # Kubernetes
 
