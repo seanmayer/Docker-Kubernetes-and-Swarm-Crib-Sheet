@@ -1493,6 +1493,33 @@ In this example, the entrypoint script reads the values of `VAR1` and `VAR2` env
       communication between services, ensuring that sensitive data is protected and
       encrypted.
 
+## ENTRYPOINT vs CMD
+
+- **ENTRYPOINT**:
+    - The `ENTRYPOINT` instruction in a Dockerfile specifies the command that will be run
+      when the container starts. It is typically used to define the main application process
+      or script that should be executed when the container is launched.
+    - The `ENTRYPOINT` instruction can be overridden at runtime by specifying a new command
+      when running the container with the `docker run` command. For example:
+      ```
+      docker run myimage /bin/sh -c "echo Hello, world!"
+      ```
+    - When the `ENTRYPOINT` instruction is used, the command specified in the `Dockerfile` is
+      the main command that will be run when the container starts. Any additional arguments
+      provided at runtime will be passed as arguments to the `ENTRYPOINT` command.
+    
+- **CMD**:
+    - The `CMD` instruction in a Dockerfile specifies the default command and arguments that
+      should be used when running the container. It is typically used to define the default
+      behavior of the container when no specific command is provided at runtime.
+    - The `CMD` instruction can be overridden at runtime by specifying a new command when
+      running the container with the `docker run` command. For example:
+      ```
+      docker run myimage /bin/sh -c "echo Hello, world!"
+      ```
+    - When the `CMD` instruction is used, the command specified in the `Dockerfile` is the
+      default command that will be run when the container starts. If a specific command is
+      provided at runtime, it will override the default `CMD` instruction.
 
 # Kubernetes
 
