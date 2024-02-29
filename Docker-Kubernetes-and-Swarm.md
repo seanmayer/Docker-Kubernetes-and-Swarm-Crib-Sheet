@@ -1521,6 +1521,51 @@ In this example, the entrypoint script reads the values of `VAR1` and `VAR2` env
       default command that will be run when the container starts. If a specific command is
       provided at runtime, it will override the default `CMD` instruction.
 
+- **Use Cases**:
+    - **ENTRYPOINT**: Use the `ENTRYPOINT` instruction to define the main application process
+      or script that should be executed when the container starts. This is useful for
+      specifying the primary command that the container should run, such as a web server, a
+      database process, or a custom application script.
+    - **CMD**: Use the `CMD` instruction to define the default command and arguments that
+      should be used when running the container. This is useful for specifying the default
+      behavior of the container when no specific command is provided at runtime, such as
+      starting a specific service or running a specific script.
+
+- **Best Practices**:
+    - **ENTRYPOINT**: Use the `ENTRYPOINT` instruction to define the main application process
+      or script that should be executed when the container starts. This provides a clear and
+      consistent entry point for the container, ensuring that the primary command is always
+      run when the container is launched.
+    - **CMD**: Use the `CMD` instruction to define the default command and arguments that
+      should be used when running the container. This allows for flexibility in specifying
+      the default behavior of the container and allows the default command to be overridden
+      at runtime if needed.
+
+- **Conclusion**:
+    - The `ENTRYPOINT` and `CMD` instructions in a Dockerfile provide a way to define the
+      main application process or script that should be executed when the container starts,
+      as well as the default command and arguments that should be used when running the
+      container. By using these instructions effectively, you can define the primary command
+      that the container should run and specify the default behavior of the container when no
+      specific command is provided at runtime.
+
+## Can I conterize a VM?
+
+- No, you cannot containerize a VM as a container is a lightweight, standalone, executable
+  package that includes everything needed to run a piece of software, including the code,
+  runtime, system tools, system libraries, and settings. A VM, on the other hand, is a
+  virtualized environment that runs an entire operating system, including the kernel,
+  system libraries, and system settings. While containers and VMs both provide isolation and
+  resource management, they are fundamentally different technologies with different use
+  cases and capabilities.
+
+## Start up order multi-container applications
+
+- You should design your containers to be resilient to start up order issues (e.g. retry
+  connections, etc)
+- You can use tools like `dockerize`, `wait-for-it`, or `docker-compose-wait` to manage
+    start up order of containers
+
 # Kubernetes
 
 - Kubernetes is an open source container orchestration tool
