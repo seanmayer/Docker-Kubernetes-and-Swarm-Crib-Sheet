@@ -9,7 +9,6 @@ Docker compose file reference: https://docs.docker.com/compose/compose-file/
 Docker swarm mode: https://docs.docker.com/engine/swarm/
 Docker swarm mode key concepts: https://docs.docker.com/engine/swarm/key-concepts/
 Docker swarm mode tutorial: https://docs.docker.com/engine/swarm/swarm-tutorial/
-
 History: https://en.wikipedia.org/wiki/Docker_(software)
 
 ### What is Docker?
